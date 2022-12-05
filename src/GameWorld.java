@@ -1,15 +1,15 @@
 import java.util.List;
 
 public class GameWorld {
-    List<PassiveObjects> passiveObject;
-    List<ActiveObjects> activeObject;
+    List<PassiveObject> passiveObject;
+    List<ActiveObject> activeObject;
     Player player;
 
-    public List<PassiveObjects> getPassiveObjects() {
+    public List<PassiveObject> getPassiveObjects() {
         return this.passiveObject;
     }
 
-    public List<ActiveObjects> getActiveObjects() {
+    public List<ActiveObject> getActiveObjects() {
         return this.activeObject;
     }
 

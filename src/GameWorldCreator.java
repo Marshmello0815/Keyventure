@@ -1,11 +1,11 @@
 public class GameWorldCreator {
-    private GameWorld;
+    private GameWorld gameWorld;
 
     public GameWorldCreator(GameWorld world) {
-        // Was muss da rein ???
+        //Perfekter Ort für Konstruktor-Dinge
     }
 
-    public void initGameWorld {
-        // Was kommt da rein ???
+    public void initGameWorld (){
+        // Initiator
     }
 }

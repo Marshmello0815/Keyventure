@@ -4,6 +4,6 @@ public class FoW {
     Player player;
 
     public void drawFoW(){
-        // Fehlt noch.
+        System.out.println("CrazyFog");
     }
 }
