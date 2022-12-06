@@ -8,7 +8,5 @@ public class Door extends PassiveObject{
         super(x, y, width, height);
     }
 
-    public void draw(){
-        System.out.println("Drawing Keyventure.Door ...");
-    }
+
 }

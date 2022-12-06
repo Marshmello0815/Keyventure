@@ -1,33 +1,28 @@
 package Keyventure;
 
 public class Player extends GameObject {
-    public Player(int x, int y, int width, int height) {
-        super(x, y, width, height);
+
+    public Player(int x, int y) {
+        super(x, y, 20, 35);
 
     }
 
     public void up(){
-        y += 1;
+        y -= 3;
     }
 
     public void down(){
-        y -= 1;
+        y += 3;
     }
 
     public void right(){
-        x += 1;
+        x += 3;
     }
 
     public void left(){
-        x -= 1;
+        x -= 3;
     }
 
-    public void move() {
-        System.out.println("Move it");
-    }
 
-    public void draw() {
-        System.out.println("Drawing PLayer ...");
-    }
 
 }

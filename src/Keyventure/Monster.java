@@ -6,7 +6,5 @@ public class Monster extends ActiveObject{
         super(x, y, width, height);
     }
 
-    public void draw(){
-        System.out.println("Drawing cute Keyventure.Monster ...");
-    }
+
 }

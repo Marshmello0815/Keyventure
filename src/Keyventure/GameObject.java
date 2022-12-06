@@ -1,5 +1,7 @@
 package Keyventure;
 
+import processing.core.PApplet;
+
 public class GameObject {
     int x;
     int y;
@@ -32,4 +34,9 @@ public class GameObject {
     public void move() {
         System.out.println("help");
     }
+
+    public void draw(PApplet app) {
+        app.rect(x, y, width, height);
+    }
+
 }

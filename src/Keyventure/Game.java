@@ -1,8 +1,8 @@
 package Keyventure;
 
-import processing.core.PApplet;
 import Keyventure.world.GameWorld;
 import Keyventure.world.GameWorldCreator;
+import processing.core.PApplet;
 
 public class Game extends PApplet {
 
@@ -24,7 +24,6 @@ public class Game extends PApplet {
     @Override
     public void draw() {
         processInput();
-        world.move();
         world.draw(this);
     }
 

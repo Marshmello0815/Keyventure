@@ -1,14 +1,10 @@
 package Keyventure;
 
 public class Key extends PassiveObject{
-    private int x = 42;
-    private int y = 42;
 
-    public Key(int x, int y, int width, int height) {
-        super(x, y, width, height);
+    public Key(int x, int y) {
+        super(x, y, 30, 30);
     }
 
-    public void draw(){
-        System.out.println("Drawing Keyventure.Key ...");
-    }
+
 }
