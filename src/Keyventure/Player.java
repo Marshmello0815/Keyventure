@@ -6,6 +6,22 @@ public class Player extends GameObject {
 
     }
 
+    public void up(){
+        y += 1;
+    }
+
+    public void down(){
+        y -= 1;
+    }
+
+    public void right(){
+        x += 1;
+    }
+
+    public void left(){
+        x -= 1;
+    }
+
     public void move() {
         System.out.println("Move it");
     }
