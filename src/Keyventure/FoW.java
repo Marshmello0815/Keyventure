@@ -1,3 +1,5 @@
+package Keyventure;
+
 public class FoW {
     private int radius = 42;
 

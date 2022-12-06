@@ -1,3 +1,5 @@
+package Keyventure;
+
 public class Monster extends ActiveObject{
 
     public Monster(int x, int y, int width, int height) {
@@ -5,6 +7,6 @@ public class Monster extends ActiveObject{
     }
 
     public void draw(){
-        System.out.println("Drawing cute Monster ...");
+        System.out.println("Drawing cute Keyventure.Monster ...");
     }
 }

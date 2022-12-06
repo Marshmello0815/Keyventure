@@ -1,3 +1,5 @@
+package Keyventure.world;
+
 public class GameWorldCreator {
     private GameWorld gameWorld;
 

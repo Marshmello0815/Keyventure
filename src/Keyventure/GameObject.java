@@ -1,3 +1,5 @@
+package Keyventure;
+
 public class GameObject {
     int x;
     int y;

@@ -1,3 +1,5 @@
+package Keyventure;
+
 public class Key extends PassiveObject{
     private int x = 42;
     private int y = 42;
@@ -7,6 +9,6 @@ public class Key extends PassiveObject{
     }
 
     public void draw(){
-        System.out.println("Drawing Key ...");
+        System.out.println("Drawing Keyventure.Key ...");
     }
 }
