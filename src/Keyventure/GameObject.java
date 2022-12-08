@@ -15,6 +15,9 @@ public class GameObject {
         this.height = height;
     }
 
+    public GameObject() {
+    }
+
     public int getX() {
         return x;
     }
@@ -29,10 +32,6 @@ public class GameObject {
 
     public int getHeight() {
         return height;
-    }
-
-    public void move() {
-        System.out.println("help");
     }
 
     public void draw(PApplet app) {

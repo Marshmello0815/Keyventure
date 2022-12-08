@@ -10,9 +10,11 @@ public class GameWorldCreator {
     }
 
     public void initGameWorld (){
-        gameWorld.player = new Player(300, 300);
+        Player player = new Player(300, 300);
+        gameWorld.player = player;
         gameWorld.passiveObject.add(new Key(42, 42));
-
+        gameWorld.passiveObject.add(new Door(142, 142));
+        gameWorld.fow = new FoW(player);
 
         // Initiator
     }

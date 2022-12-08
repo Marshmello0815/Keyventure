@@ -2,7 +2,6 @@ package Keyventure.world;
 
 import Keyventure.*;
 import processing.core.PApplet;
-import processing.core.PConstants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,15 +35,11 @@ public class GameWorld {
 
     public void draw(PApplet app){
         app.background(200, 200, 200);
-        app.pushStyle();
         app.rect(20, 20, app.width-40, app.height-40);
         for(GameObject object : this.allObjects()){
             object.draw(app);
         }
-        app.noFill();
-        app.ellipse(player.getX()+player.getWidth()/2, player.getY()+player.getHeight()/2, 60, 60 );
-        app.popStyle();
-
+        fow.draw(app);
         //zeichnen uiiiiiiii
     }
 

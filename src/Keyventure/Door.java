@@ -1,12 +1,17 @@
 package Keyventure;
 
-public class Door extends PassiveObject{
-    private int x = 42;
-    private int y = 42;
+import processing.core.PApplet;
 
-    public Door(int x, int y, int width, int height) {
-        super(x, y, width, height);
+public class Door extends PassiveObject{
+
+    public Door(int x, int y) {
+        super(x, y, 20, 20);
     }
 
-
+    @Override
+    public void draw(PApplet app) {
+        app.pushStyle();
+        app.rect(x, y, width, height);
+        app.popStyle();
+    }
 }

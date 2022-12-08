@@ -1,5 +1,7 @@
 package Keyventure;
 
+import processing.core.PApplet;
+
 public class Player extends GameObject {
 
     public Player(int x, int y) {
@@ -23,6 +25,11 @@ public class Player extends GameObject {
         x -= 3;
     }
 
-
+    @Override
+    public void draw(PApplet app) {
+        app.pushStyle();
+        app.rect(x, y, width, height);
+        app.popStyle();
+    }
 
 }
