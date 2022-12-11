@@ -22,8 +22,8 @@ public class Keyventure extends PApplet {
 
     @Override
     public void settings() {
-        width = 600;
-        height = 600;
+        width = displayWidth;
+        height = displayHeight;
     }
 
     @Override
