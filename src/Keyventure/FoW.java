@@ -12,8 +12,19 @@ public class FoW {
 
     public void draw(PApplet app) {
         app.pushStyle();
-        app.noFill();
-        app.ellipse((float) (player.getX() + player.getWidth() / 2.0), (float) (player.getY() + player.getHeight() / 2.0), 60, 60);
+        app.beginShape();
+        app.fill(0, 0, 0);
+        app.vertex(0, 0);
+        app.vertex(0, app.height);
+        app.vertex(app.width, app.height);
+        app.vertex(app.width, 0);
+        app.beginContour();
+        app.vertex((float) (player.getX() + player.getWidth() / 2 - 100), (float) (player.getY() + player.getHeight() / 2 - 100));
+        app.vertex((float) (player.getX() + player.getWidth() / 2 + 100), (float) (player.getY() + player.getHeight() / 2 - 100));
+        app.vertex((float) (player.getX() + player.getWidth() / 2 + 100), (float) (player.getY() + player.getHeight() / 2 + 100));
+        app.vertex((float) (player.getX() + player.getWidth() / 2 - 100), (float) (player.getY() + player.getHeight() / 2 + 100));
+        app.endContour();
+        app.endShape();
         app.popStyle();
     }
 }

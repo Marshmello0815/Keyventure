@@ -4,20 +4,23 @@ import Keyventure.world.GameWorld;
 import Keyventure.world.GameWorldCreator;
 import processing.core.PApplet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static java.awt.event.KeyEvent.*;
 
 public class Keyventure extends PApplet {
 
     GameWorld world;
     GameWorldCreator creator;
-    boolean up, left, down, right;
-    boolean[] keys;
+
+    List<Integer> keyLastPressed;
 
     public Keyventure() {
         world = new GameWorld();
         creator = new GameWorldCreator(world);
-        keys = new boolean[65535];
         creator.initGameWorld();
+        keyLastPressed = new ArrayList<>();
     }
 
     @Override
@@ -33,79 +36,35 @@ public class Keyventure extends PApplet {
     }
 
     private void processInput() {
-        if (up) {
-            world.playerUp();
-        }
-        if (left) {
-            world.playerLeft();
-        }
-        if (down) {
-            world.playerDown();
-        }
-        if (right) {
-            world.playerRight();
+        if (keyLastPressed.size() > 0) {
+            if (keyLastPressed.get(0) == VK_UP || keyLastPressed.get(0) == VK_W) {
+                world.playerUp();
+            }
+            if (keyLastPressed.get(0) == VK_LEFT || keyLastPressed.get(0) == VK_A) {
+                world.playerLeft();
+            }
+            if (keyLastPressed.get(0) == VK_DOWN || keyLastPressed.get(0) == VK_S) {
+                world.playerDown();
+            }
+            if (keyLastPressed.get(0) == VK_RIGHT || keyLastPressed.get(0) == VK_D) {
+                world.playerRight();
+            }
         }
     }
 
     public void keyPressed() {
-        keys[keyCode] = true;
-        if (!left && !down && !right) {
-            if (keys[VK_W] || keys[VK_UP]) {
-                up = true;
+        if (keyCode == VK_UP || keyCode == VK_W || keyCode == VK_LEFT || keyCode == VK_A || keyCode == VK_DOWN || keyCode == VK_S || keyCode == VK_RIGHT || keyCode == VK_D) {
+            if (keyLastPressed.size() > 0) {
+                keyLastPressed.remove(0);
             }
-        }
-        if (!up && !down && !right) {
-            if (keys[VK_A] || keys[VK_LEFT]) {
-                left = true;
-            }
-        }
-        if (!left && !up && !right) {
-            if (keys[VK_S] || keys[VK_DOWN]) {
-                down = true;
-            }
-        }
-        if (!left && !down && !up) {
-            if (keys[VK_D] || keys[VK_RIGHT]) {
-                right = true;
-            }
-        }
-        if (!keys[VK_W] && !keys[VK_UP] && !keys[VK_A] && !keys[VK_LEFT] && !keys[VK_S] && !keys[VK_DOWN] && !keys[VK_D] && !keys[VK_RIGHT]) {
-            up = false;
-            left = false;
-            down = false;
-            right = false;
+            keyLastPressed.add(keyCode);
         }
     }
 
     public void keyReleased() {
-        keys[keyCode] = false;
-        if (!left && !down && !right) {
-            if (!keys[VK_W] && !keys[VK_UP]) {
-                up = false;
-            }
-        }
-        if (!up && !down && !right) {
-            if (!keys[VK_A] && !keys[VK_LEFT]) {
-                left = false;
-            }
-        }
-        if (!left && !up && !right) {
-            if (!keys[VK_S] && !keys[VK_DOWN]) {
-                down = false;
-            }
-        }
-        if (!left && !down && !up) {
-            if (!keys[VK_D] && !keys[VK_RIGHT]) {
-                right = false;
-            }
-        }
-        if (!keys[VK_W] && !keys[VK_UP] && !keys[VK_A] && !keys[VK_LEFT] && !keys[VK_S] && !keys[VK_DOWN] && !keys[VK_D] && !keys[VK_RIGHT]) {
-            up = false;
-            left = false;
-            down = false;
-            right = false;
+        if (keyCode == VK_UP || keyCode == VK_W || keyCode == VK_LEFT || keyCode == VK_A || keyCode == VK_DOWN || keyCode == VK_S || keyCode == VK_RIGHT || keyCode == VK_D) {
+            keyLastPressed.removeIf(keytime -> keytime == keyCode);
         }
     }
-
 }
 
