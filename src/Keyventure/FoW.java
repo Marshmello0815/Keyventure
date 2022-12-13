@@ -3,7 +3,7 @@ package Keyventure;
 import processing.core.PApplet;
 
 public class FoW {
-    private int radius = 42;
+    private int radius = 100;
     Player player;
 
     public FoW(Player player) {
@@ -19,10 +19,10 @@ public class FoW {
         app.vertex(app.width, app.height);
         app.vertex(app.width, 0);
         app.beginContour();
-        app.vertex((float) (player.getX() + player.getWidth() / 2 - 100), (float) (player.getY() + player.getHeight() / 2 - 100));
-        app.vertex((float) (player.getX() + player.getWidth() / 2 + 100), (float) (player.getY() + player.getHeight() / 2 - 100));
-        app.vertex((float) (player.getX() + player.getWidth() / 2 + 100), (float) (player.getY() + player.getHeight() / 2 + 100));
-        app.vertex((float) (player.getX() + player.getWidth() / 2 - 100), (float) (player.getY() + player.getHeight() / 2 + 100));
+        app.vertex((float) (player.getX() + player.getWidth() / 2 - radius), (float) (player.getY() + player.getHeight() / 2 - radius));
+        app.vertex((float) (player.getX() + player.getWidth() / 2 + radius), (float) (player.getY() + player.getHeight() / 2 - radius));
+        app.vertex((float) (player.getX() + player.getWidth() / 2 + radius), (float) (player.getY() + player.getHeight() / 2 + radius));
+        app.vertex((float) (player.getX() + player.getWidth() / 2 - radius), (float) (player.getY() + player.getHeight() / 2 + radius));
         app.endContour();
         app.endShape();
         app.popStyle();
