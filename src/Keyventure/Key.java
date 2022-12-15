@@ -4,8 +4,12 @@ import processing.core.PApplet;
 
 public class Key extends PassiveObject{
 
-    public Key(int x, int y) {
-        super(x, y, 30, 30);
+    public Key(IGameWorld world, int x, int y) {
+        super(world, x, y, 30, 30);
+    }
+
+    public void kollisionWithPlayer(){
+        world.pickKey(this);
     }
 
     @Override

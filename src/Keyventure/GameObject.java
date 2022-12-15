@@ -2,20 +2,26 @@ package Keyventure;
 
 import processing.core.PApplet;
 
-public class GameObject {
+public abstract class GameObject {
+
+    IGameWorld world;
     int x;
     int y;
     int width;
     int height;
 
-    public GameObject(int x, int y, int width, int height) {
+    public GameObject(IGameWorld world, int x, int y, int width, int height) {
+        this.world = world;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
     }
 
-    public GameObject() {
+    public boolean checkKollision(GameObject that){
+        boolean kollisionX = this.getX() + this.getWidth() >= that.getX() && that.getX() + that.getWidth() >= this.getX();
+        boolean kollisionY = this.getY() + this.getHeight() >= that.getY() && that.getY() + that.getHeight() >= this.getY();
+        return kollisionX && kollisionY;
     }
 
     public int getX() {

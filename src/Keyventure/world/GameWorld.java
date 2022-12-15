@@ -7,7 +7,7 @@ import processing.core.PApplet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameWorld {
+public class GameWorld implements IGameWorld{
     List<PassiveObject> passiveObject;
     List<ActiveObject> activeObject;
     Player player;
@@ -40,6 +40,12 @@ public class GameWorld {
             object.draw(app);
         }
         fow.draw(app);
+        for(PassiveObject pObject : this.passiveObject){
+            if(this.player.checkKollision(pObject)){
+                pObject.kollisionWithPlayer();
+            }
+        }
+
         //zeichnen uiiiiiiii
     }
 
@@ -47,8 +53,17 @@ public class GameWorld {
         //Monster Bewegungsmuster
     }
 
+    @Override
+    public void pickKey(Key key){
+        this.passiveObject.remove(key);
+    }
+
     public void playerUp(){
-        this.player.up();
+        if(player.getY()>=0){
+            this.player.up();
+        } else{
+            this.playerDown();
+        }
     }
 
     public void playerDown(){

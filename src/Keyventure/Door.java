@@ -4,8 +4,12 @@ import processing.core.PApplet;
 
 public class Door extends PassiveObject{
 
-    public Door(int x, int y) {
-        super(x, y, 20, 20);
+    public Door(IGameWorld world, int x, int y) {
+        super(world, x, y, 20, 20);
+    }
+
+    public void kollisionWithPlayer(){
+
     }
 
     @Override

@@ -4,8 +4,8 @@ import processing.core.PApplet;
 
 public class Player extends GameObject {
 
-    public Player(int x, int y) {
-        super(x, y, 20, 35);
+    public Player(IGameWorld world, int x, int y) {
+        super(world, x, y, 20, 35);
 
     }
 
