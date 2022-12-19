@@ -58,12 +58,13 @@ public class GameWorld implements IGameWorld{
         this.passiveObject.remove(key);
     }
 
-    public void playerUp(){
-        if(player.getY()>=0){
-            this.player.up();
-        } else{
-            this.playerDown();
-        }
+    @Override
+    public void touchSourrounding(Sourrounding sourrounding) {
+        this.player.stop();
+    }
+
+    public void playerUp() {
+        this.player.up();
     }
 
     public void playerDown(){
