@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameWorld implements IGameWorld{
+
     List<PassiveObject> passiveObject;
     List<ActiveObject> activeObject;
     Player player;
@@ -35,11 +36,14 @@ public class GameWorld implements IGameWorld{
 
     public void draw(PApplet app){
         app.background(200, 200, 200);
+
         app.rect(20, 20, app.width-40, app.height-40);
+
+
         for(GameObject object : this.allObjects()){
             object.draw(app);
         }
-        fow.draw(app);
+        //fow.draw(app);
         for(PassiveObject pObject : this.passiveObject){
             if(this.player.checkKollision(pObject)){
                 pObject.kollisionWithPlayer();
@@ -59,7 +63,7 @@ public class GameWorld implements IGameWorld{
     }
 
     @Override
-    public void touchSourrounding(Sourrounding sourrounding) {
+    public void touchWall(Wall wall) {
         this.player.stop();
     }
 

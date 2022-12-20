@@ -3,6 +3,10 @@ package Keyventure.world;
 import Keyventure.*;
 
 public class GameWorldCreator {
+
+
+
+
     private GameWorld gameWorld;
 
     public GameWorldCreator(GameWorld world) {
@@ -12,7 +16,7 @@ public class GameWorldCreator {
     public void initGameWorld (){
         Player player = new Player(gameWorld, 300, 300);
         gameWorld.player = player;
-        gameWorld.passiveObject.add(new Sourrounding(gameWorld));
+        gameWorld.passiveObject.add(new Wall(gameWorld, 1, 1));
         gameWorld.passiveObject.add(new Key(gameWorld, 42, 42));
         gameWorld.passiveObject.add(new Door(gameWorld,142, 142));
         gameWorld.fow = new FoW(player);
