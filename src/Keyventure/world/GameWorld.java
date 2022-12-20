@@ -13,6 +13,11 @@ public class GameWorld implements IGameWorld{
     Player player;
     FoW fow;
 
+    boolean up = false;
+    boolean down = false;
+    boolean left = false;
+    boolean right = false;
+
     public GameWorld() {
         passiveObject = new ArrayList<>();
         activeObject = new ArrayList<>();
@@ -60,23 +65,50 @@ public class GameWorld implements IGameWorld{
 
     @Override
     public void touchSourrounding(Sourrounding sourrounding) {
-        this.player.stop();
+        if(up){
+            this.player.down();
+        }
+        if(down){
+            this.player.up();
+        }
+        if(left){
+            this.player.right();
+        }
+        if(right){
+            this.player.left();
+        }
     }
 
     public void playerUp() {
         this.player.up();
+        up = true;
+        down = false;
+        left = false;
+        right = false;
     }
 
     public void playerDown(){
         this.player.down();
+        down = true;
+        up = false;
+        left = false;
+        right = false;
     }
 
     public void playerLeft(){
         this.player.left();
+        left = true;
+        down = false;
+        up = false;
+        right = false;
     }
 
     public void playerRight(){
         this.player.right();
+        right = true;
+        down = false;
+        left = false;
+        up = false;
     }
 
 }

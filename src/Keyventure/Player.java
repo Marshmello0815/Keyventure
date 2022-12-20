@@ -4,8 +4,6 @@ import processing.core.PApplet;
 
 public class Player extends GameObject {
 
-    public boolean stop = false;
-
     public Player(IGameWorld world, int x, int y) {
         super(world, x, y, 20, 35);
 
@@ -25,12 +23,6 @@ public class Player extends GameObject {
 
     public void left(){
          x -= 3;
-    }
-
-    public void stop(){
-        x = this.getX();
-        y = this.getY();
-        stop = true;
     }
 
     @Override
