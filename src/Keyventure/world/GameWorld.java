@@ -94,34 +94,12 @@ public class GameWorld implements IGameWorld{
 
     @Override
     public void touchWall(Wall wall) {
-        if(up){
-            this.player.down();
-        }
-        if(down){
-            this.player.up();
-        }
-        if(left){
-            this.player.right();
-        }
-        if(right){
-            this.player.left();
-        }
+        movePlayerBack();
     }
     @Override
     public void enterDoor(Door door){
         if(!hasKey){
-            if(up){
-                this.player.down();
-            }
-            if(down){
-                this.player.up();
-            }
-            if(left){
-                this.player.right();
-            }
-            if(right){
-                this.player.left();
-            }
+            movePlayerBack();
         }
         if(hasKey&&this.player.checkKollision(door)){
             gameWon = true;
@@ -158,6 +136,21 @@ public class GameWorld implements IGameWorld{
                     }
                 }
             }
+        }
+    }
+
+    private void movePlayerBack(){
+        if(up){
+            this.player.down();
+        }
+        if(down){
+            this.player.up();
+        }
+        if(left){
+            this.player.right();
+        }
+        if(right){
+            this.player.left();
         }
     }
 
