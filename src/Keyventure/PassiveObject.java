@@ -1,5 +1,7 @@
 package Keyventure;
 
+import Keyventure.world.IGameWorld;
+
 public abstract class PassiveObject extends GameObject{
 
     public PassiveObject(IGameWorld world, int x, int y, int width, int height) {

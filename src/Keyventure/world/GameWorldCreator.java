@@ -186,9 +186,12 @@ public class GameWorldCreator {
             }
         }
 
-        gameWorld.passiveObject.add(new Key(gameWorld, (numWallX-12)*wallSize-wallSize/3, (numWallY-(numWallY-4))*wallSize));
+        //gameWorld.passiveObject.add(new Key(gameWorld, (numWallX-12)*wallSize-wallSize/3, (numWallY-(numWallY-4))*wallSize));
+        gameWorld.passiveObject.add(new Key(gameWorld, 300, 450));
         gameWorld.passiveObject.add(new Door(gameWorld,wallSize*3, 0, wallSize));
         gameWorld.fow = new FoW(player);
+
+        gameWorld.activeObject.add(new Monster(gameWorld, 200, 400));
 
         // Initiator
     }

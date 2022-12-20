@@ -1,5 +1,6 @@
 package Keyventure;
 
+import Keyventure.world.IGameWorld;
 import processing.core.PApplet;
 
 public class Wall extends PassiveObject{

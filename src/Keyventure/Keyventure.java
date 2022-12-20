@@ -35,6 +35,7 @@ public class Keyventure extends PApplet {
     @Override
     public void draw() {
         processInput();
+        world.move();
         world.draw(this);
     }
 

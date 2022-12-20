@@ -6,6 +6,7 @@ import processing.core.PApplet;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class GameWorld implements IGameWorld{
     List<PassiveObject> passiveObject;
@@ -15,6 +16,7 @@ public class GameWorld implements IGameWorld{
 
     boolean hasKey = false;
     boolean gameWon = false;
+    boolean gameLose = false;
 
     boolean up = false;
     boolean down = false;
@@ -54,20 +56,34 @@ public class GameWorld implements IGameWorld{
             if(this.player.checkKollision(pObject)){
                 pObject.kollisionWithPlayer();
             }
-            if(gameWon){
-                app.pushStyle();
-                app.fill(0,0,0);
-                //app.rect(0,0, app.width, app.height);
-                app.text("Game Won", app.height/2, app.width/2);
-                app.popStyle();
+        }
+        for(ActiveObject aObject : this.activeObject){
+            if(this.player.checkKollision(aObject)){
+                gameLose = true;
             }
+        }
+
+        if(gameLose){
+            app.pushStyle();
+            app.fill(0,0,0);
+            //app.rect(0,0, app.width, app.height);
+            app.text("Game Over", (float) app.height/2, (float) app.width/2);
+            app.popStyle();
+        }
+
+        if(gameWon){
+            app.pushStyle();
+            app.fill(0,0,0);
+            //app.rect(0,0, app.width, app.height);
+            app.text("Game Won", (float) app.height/2, (float) app.width/2);
+            app.popStyle();
         }
 
         //zeichnen uiiiiiiii
     }
 
-    public void moveActiveObject(){
-        //Monster Bewegungsmuster
+    public void move(){
+        moveMonster();
     }
 
     @Override
@@ -93,8 +109,55 @@ public class GameWorld implements IGameWorld{
     }
     @Override
     public void enterDoor(Door door){
+        if(!hasKey){
+            if(up){
+                this.player.down();
+            }
+            if(down){
+                this.player.up();
+            }
+            if(left){
+                this.player.right();
+            }
+            if(right){
+                this.player.left();
+            }
+        }
         if(hasKey&&this.player.checkKollision(door)){
             gameWon = true;
+        }
+    }
+
+    @Override
+    public void monsterTouchWall(Monster monster) {
+        int oldDirection = monster.getDirection();
+        Random random = new Random();
+        int direction = random.nextInt(4);
+        if(oldDirection == 0){
+            monster.setX(monster.getX()-2);
+        }
+        if(oldDirection == 1){
+            monster.setX(monster.getX()+2);
+        }
+        if(oldDirection == 2){
+            monster.setY(monster.getY()-2);
+        }
+        if(oldDirection == 3){
+            monster.setY(monster.getY()+2);
+        }
+        monster.setDirection(direction);
+    }
+
+    private void moveMonster(){
+        for(ActiveObject aObject : this.activeObject) {
+            aObject.move();
+            for (PassiveObject pObject : this.passiveObject) {
+                if(aObject.checkKollision(pObject)){
+                    if(pObject instanceof Wall){
+                        aObject.kollisionWithWall();
+                    }
+                }
+            }
         }
     }
 
