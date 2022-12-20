@@ -5,8 +5,8 @@ import processing.core.PApplet;
 public class Wall extends PassiveObject{
 
 
-    public Wall(IGameWorld world, int x, int y) {
-        super(world, x, y, 50, 50);
+    public Wall(IGameWorld world, int x, int y , int size) {
+        super(world, x, y, size , size);
     }
 
     public void kollisionWithPlayer(){

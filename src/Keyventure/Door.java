@@ -9,7 +9,7 @@ public class Door extends PassiveObject{
     }
 
     public void kollisionWithPlayer(){
-
+        world.enterDoor(this);
     }
 
     @Override

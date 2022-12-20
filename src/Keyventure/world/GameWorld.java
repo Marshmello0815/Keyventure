@@ -13,6 +13,8 @@ public class GameWorld implements IGameWorld{
     Player player;
     FoW fow;
 
+    boolean gameWon = false;
+
     boolean up = false;
     boolean down = false;
     boolean left = false;
@@ -22,6 +24,7 @@ public class GameWorld implements IGameWorld{
         passiveObject = new ArrayList<>();
         activeObject = new ArrayList<>();
     }
+
 
     void addPassiveObject(PassiveObject passiveObject){
         this.passiveObject.add(passiveObject);
@@ -38,16 +41,24 @@ public class GameWorld implements IGameWorld{
         return objects;
     }
 
+
+
     public void draw(PApplet app){
         app.background(200, 200, 200);
-        app.rect(20, 20, app.width-40, app.height-40);
         for(GameObject object : this.allObjects()){
             object.draw(app);
         }
-        fow.draw(app);
+        //fow.draw(app);
         for(PassiveObject pObject : this.passiveObject){
             if(this.player.checkKollision(pObject)){
                 pObject.kollisionWithPlayer();
+            }
+            if(gameWon){
+                app.pushStyle();
+                app.fill(0,0,0);
+                //app.rect(0,0, app.width, app.height);
+                app.text("Game Won", app.height/2, app.width/2);
+                app.popStyle();
             }
         }
 
@@ -64,7 +75,7 @@ public class GameWorld implements IGameWorld{
     }
 
     @Override
-    public void touchSourrounding(Sourrounding sourrounding) {
+    public void touchWall(Wall wall) {
         if(up){
             this.player.down();
         }
@@ -77,6 +88,10 @@ public class GameWorld implements IGameWorld{
         if(right){
             this.player.left();
         }
+    }
+    @Override
+    public void enterDoor(Door door){
+        gameWon = true;
     }
 
     public void playerUp() {
