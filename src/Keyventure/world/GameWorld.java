@@ -8,11 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameWorld implements IGameWorld{
-
     List<PassiveObject> passiveObject;
     List<ActiveObject> activeObject;
     Player player;
     FoW fow;
+
+    boolean up = false;
+    boolean down = false;
+    boolean left = false;
+    boolean right = false;
 
     public GameWorld() {
         passiveObject = new ArrayList<>();
@@ -36,14 +40,11 @@ public class GameWorld implements IGameWorld{
 
     public void draw(PApplet app){
         app.background(200, 200, 200);
-
         app.rect(20, 20, app.width-40, app.height-40);
-
-
         for(GameObject object : this.allObjects()){
             object.draw(app);
         }
-        //fow.draw(app);
+        fow.draw(app);
         for(PassiveObject pObject : this.passiveObject){
             if(this.player.checkKollision(pObject)){
                 pObject.kollisionWithPlayer();
@@ -63,24 +64,51 @@ public class GameWorld implements IGameWorld{
     }
 
     @Override
-    public void touchWall(Wall wall) {
-        this.player.stop();
+    public void touchSourrounding(Sourrounding sourrounding) {
+        if(up){
+            this.player.down();
+        }
+        if(down){
+            this.player.up();
+        }
+        if(left){
+            this.player.right();
+        }
+        if(right){
+            this.player.left();
+        }
     }
 
     public void playerUp() {
         this.player.up();
+        up = true;
+        down = false;
+        left = false;
+        right = false;
     }
 
     public void playerDown(){
         this.player.down();
+        down = true;
+        up = false;
+        left = false;
+        right = false;
     }
 
     public void playerLeft(){
         this.player.left();
+        left = true;
+        down = false;
+        up = false;
+        right = false;
     }
 
     public void playerRight(){
         this.player.right();
+        right = true;
+        down = false;
+        left = false;
+        up = false;
     }
 
 }

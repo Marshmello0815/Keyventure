@@ -13,7 +13,6 @@ public class Keyventure extends PApplet {
 
     GameWorld world;
     GameWorldCreator creator;
-
     List<Integer> keyLastPressed;
 
     public Keyventure() {
