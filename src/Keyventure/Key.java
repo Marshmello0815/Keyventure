@@ -8,6 +8,7 @@ public class Key extends PassiveObject{
         super(world, x, y, 30, 30);
     }
 
+    @Override
     public void kollisionWithPlayer(){
         world.pickKey(this);
     }
