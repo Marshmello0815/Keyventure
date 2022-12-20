@@ -13,6 +13,7 @@ public class GameWorld implements IGameWorld{
     Player player;
     FoW fow;
 
+    boolean hasKey = false;
     boolean gameWon = false;
 
     boolean up = false;
@@ -72,6 +73,7 @@ public class GameWorld implements IGameWorld{
     @Override
     public void pickKey(Key key){
         this.passiveObject.remove(key);
+        hasKey = true;
     }
 
     @Override
@@ -91,7 +93,9 @@ public class GameWorld implements IGameWorld{
     }
     @Override
     public void enterDoor(Door door){
-        gameWon = true;
+        if(hasKey&&this.player.checkKollision(door)){
+            gameWon = true;
+        }
     }
 
     public void playerUp() {
