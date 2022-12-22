@@ -8,10 +8,11 @@ import java.util.Random;
 public class Monster extends ActiveObject {
 
     private int direction;
+    private final Random random;
 
     public Monster(IGameWorld world, int x, int y) {
         super(world, x, y, 30, 50);
-        Random random = new Random();
+        random = new Random();
         direction = random.nextInt(4);
     }
 
@@ -26,6 +27,14 @@ public class Monster extends ActiveObject {
     @Override
     public void kollisionWithWall() {
         world.monsterTouchWall(this);
+    }
+
+    public void changeDirection(){
+        int zufall = random.nextInt(2);
+        if (zufall == 1) {
+            int direction = random.nextInt(4);
+            this.setDirection(direction);
+        }
     }
 
     @Override

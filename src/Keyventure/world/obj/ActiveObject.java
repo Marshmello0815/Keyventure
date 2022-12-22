@@ -9,4 +9,5 @@ public abstract class ActiveObject extends GameObject{
 
     public abstract void move();
     public abstract void kollisionWithWall();
+    public abstract void changeDirection();
 }

@@ -11,4 +11,5 @@ public interface IGameWorld {
     void touchWall(Wall wall);
     void enterDoor(Door door);
     void monsterTouchWall(Monster monster);
+    void makePlayerInvisible();
 }
