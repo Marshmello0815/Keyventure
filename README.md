@@ -1,3 +1,3 @@
 # Keyventure
 
-By Louisa V. und Serkan E.
+By Louisa Veeck und Serkan Erdogan
