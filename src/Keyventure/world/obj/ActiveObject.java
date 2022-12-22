@@ -1,4 +1,4 @@
-package Keyventure;
+package Keyventure.world.obj;
 
 import Keyventure.world.IGameWorld;
 

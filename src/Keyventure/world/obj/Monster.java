@@ -1,11 +1,11 @@
-package Keyventure;
+package Keyventure.world.obj;
 
 import Keyventure.world.IGameWorld;
 import processing.core.PApplet;
 
 import java.util.Random;
 
-public class Monster extends ActiveObject{
+public class Monster extends ActiveObject {
 
     private int direction;
 

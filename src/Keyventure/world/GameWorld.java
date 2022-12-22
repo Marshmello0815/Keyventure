@@ -1,7 +1,6 @@
 package Keyventure.world;
 
-import Keyventure.*;
-
+import Keyventure.world.obj.*;
 import processing.core.PApplet;
 
 import java.util.ArrayList;

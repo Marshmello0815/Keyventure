@@ -1,9 +1,9 @@
 package Keyventure.world;
 
-import Keyventure.Door;
-import Keyventure.Key;
-import Keyventure.Monster;
-import Keyventure.Wall;
+import Keyventure.world.obj.Door;
+import Keyventure.world.obj.Key;
+import Keyventure.world.obj.Monster;
+import Keyventure.world.obj.Wall;
 
 public interface IGameWorld {
 

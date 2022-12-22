@@ -1,6 +1,6 @@
 package Keyventure.world;
 
-import Keyventure.*;
+import Keyventure.world.obj.*;
 
 public class GameWorldCreator {
     private int gameWidth;

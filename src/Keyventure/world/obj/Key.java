@@ -1,17 +1,17 @@
-package Keyventure;
+package Keyventure.world.obj;
 
 import Keyventure.world.IGameWorld;
 import processing.core.PApplet;
 
-public class Door extends PassiveObject{
+public class Key extends PassiveObject {
 
-    public Door(IGameWorld world, int x, int y, int size) {
-        super(world, x, y, size, size/2);
+    public Key(IGameWorld world, int x, int y) {
+        super(world, x, y, 30, 30);
     }
 
     @Override
     public void kollisionWithPlayer(){
-        world.enterDoor(this);
+        world.pickKey(this);
     }
 
     @Override
