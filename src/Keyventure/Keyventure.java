@@ -18,16 +18,19 @@ public class Keyventure extends PApplet {
     public Keyventure() {
         world = new GameWorld();
         creator = new GameWorldCreator(world);
-
         keyLastPressed = new ArrayList<>();
     }
 
+    @Override
+    public void setup(){
+        surface.setResizable(true);
+    }
 
     @Override
     public void settings() {
         width = displayWidth;
-        height = displayHeight-98;
-
+        height = displayHeight;
+        size(width,height-120);
         creator.setEnv(width, height);
         creator.initGameWorld();
     }
