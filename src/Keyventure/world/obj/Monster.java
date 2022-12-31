@@ -9,6 +9,7 @@ public class Monster extends ActiveObject {
 
     private int direction;
     private final Random random;
+    public static final int STEP_SIZE = 2;
 
     public Monster(IGameWorld world, int x, int y) {
         super(world, x, y, 30, 50);
@@ -40,16 +41,16 @@ public class Monster extends ActiveObject {
     @Override
     public void move(){
         if(direction == 0){
-            x += 2; //right
+            x += STEP_SIZE; //right
         }
         if(direction == 1){
-            x -= 2; //left
+            x -= STEP_SIZE; //left
         }
         if(direction == 2){
-            y += 2; //down
+            y += STEP_SIZE; //down
         }
         if(direction == 3){
-            y -= 2; //up
+            y -= STEP_SIZE; //up
         }
     }
 

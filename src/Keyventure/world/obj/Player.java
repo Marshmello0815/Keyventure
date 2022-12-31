@@ -6,6 +6,7 @@ import processing.core.PApplet;
 public class Player extends GameObject {
 
     public static final int CYCLES_INVISIBILITY = 90;
+    public static final int STEP_SIZE = 3;
     private int invisible = 0;
 
     public Player(IGameWorld world, int x, int y) {
@@ -14,18 +15,20 @@ public class Player extends GameObject {
     }
 
     public void up(){
-         y -= 3;
+         y -= STEP_SIZE;
     }
-
     public void down(){
-         y += 3;
+         y += STEP_SIZE;
     }
-
     public void right(){
-         x += 3;
+         x += STEP_SIZE;
     }
     public void left(){
-         x -= 3;
+         x -= STEP_SIZE;
+    }
+
+    public int getInvisible() {
+        return invisible;
     }
 
     public void makeInvisible() {

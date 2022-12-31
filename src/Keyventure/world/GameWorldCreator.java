@@ -190,7 +190,7 @@ public class GameWorldCreator {
         gameWorld.addPassiveObject(new Key(gameWorld, 300, 450));
         gameWorld.addPassiveObject(new Door(gameWorld,wallSize*3, 0, wallSize));
         gameWorld.fow = new FoW(player);
-        gameWorld.lives = new Lives(gameWorld, 0,0, 30,30);
+        gameWorld.lives = new Lives(gameWorld, 0,0);
         gameWorld.addActiveObject(new Monster(gameWorld, 200, 400));
 
         // Initiator

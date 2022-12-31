@@ -12,9 +12,8 @@ public class Lives extends GameObject {
     int lives;
     int lostLives;
 
-
-    public Lives(IGameWorld world, int x, int y, int width, int height) {
-        super(world, x, y, width, height);
+    public Lives(IGameWorld world, int x, int y) {
+        super(world, x, y, 30, 30);
         lives = 3;
         lostLives = 0;
     }
