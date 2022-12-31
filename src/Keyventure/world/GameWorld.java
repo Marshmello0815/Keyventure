@@ -132,7 +132,7 @@ public class GameWorld implements IGameWorld {
     }
 
     @Override
-    public void touchWall(Wall wall) {
+    public void playerTouchWall(Wall wall) {
         movePlayerBack();
     }
 

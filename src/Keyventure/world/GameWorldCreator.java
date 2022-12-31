@@ -187,11 +187,11 @@ public class GameWorldCreator {
         }
 
         //gameWorld.passiveObject.add(new Key(gameWorld, (numWallX-12)*wallSize-wallSize/3, (numWallY-(numWallY-4))*wallSize));
-        gameWorld.passiveObject.add(new Key(gameWorld, 300, 450));
-        gameWorld.passiveObject.add(new Door(gameWorld,wallSize*3, 0, wallSize));
+        gameWorld.addPassiveObject(new Key(gameWorld, 300, 450));
+        gameWorld.addPassiveObject(new Door(gameWorld,wallSize*3, 0, wallSize));
         gameWorld.fow = new FoW(player);
         gameWorld.lives = new Lives(gameWorld, 0,0, 30,30);
-        gameWorld.activeObject.add(new Monster(gameWorld, 200, 400));
+        gameWorld.addActiveObject(new Monster(gameWorld, 200, 400));
 
         // Initiator
     }
@@ -200,4 +200,13 @@ public class GameWorldCreator {
         this.gameWidth = width;
         this.gameHeight = height;
     }
+
+    public int getGameWidth() {
+        return gameWidth;
+    }
+
+    public int getGameHeight() {
+        return gameHeight;
+    }
+
 }

@@ -11,7 +11,7 @@ public class Wall extends PassiveObject{
     }
 
     public void kollisionWithPlayer(){
-        world.touchWall(this);
+        world.playerTouchWall(this);
     }
 
     @Override
