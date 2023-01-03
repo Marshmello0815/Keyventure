@@ -27,6 +27,22 @@ public class GameWorldTest extends PApplet {
     }
 
     @Test
+    public void getPassiveObject() {
+        GameWorld world = new GameWorld();
+        Key key = new Key(world,10,10);
+        world.addPassiveObject(key);
+        assertEquals(world.getPassiveObject().size(), 1);
+    }
+
+    @Test
+    public void getActiveObject() {
+        GameWorld world = new GameWorld();
+        Monster monster = new Monster(world, 10,10);
+        world.addActiveObject(monster);
+        assertEquals(world.getActiveObject().size(), 1);
+    }
+
+    @Test
     public void testAllObjects() {
         GameWorld world = new GameWorld();
         Key key = new Key(world,10,10);
@@ -78,7 +94,7 @@ public class GameWorldTest extends PApplet {
     }
 
     @Test
-    public void testEnterDoor() {
+    public void testEnterDoorWithKey() {
         GameWorld world = new GameWorld();
         world.player = new Player(world, 10, 10);
         Door door = new Door(world, 10, 10, 30);
@@ -86,6 +102,18 @@ public class GameWorldTest extends PApplet {
         world.hasKey = true;
         world.enterDoor(door);
         assertTrue(world.gameWon);
+    }
+
+    @Test
+    public void testEnterDoorWithoutKey() {
+        GameWorld world = new GameWorld();
+        world.player = new Player(world, 10, 10);
+        Door door = new Door(world, 10, 10, 30);
+        world.addPassiveObject(door);
+        world.hasKey = false;
+        world.up = true;
+        world.enterDoor(door);
+        assertEquals(10 + Player.STEP_SIZE, world.player.getY());
     }
 
     @Test

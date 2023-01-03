@@ -5,13 +5,14 @@ import processing.core.PApplet;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
 public class GameWorld implements IGameWorld {
     List<PassiveObject> passiveObject;
     List<ActiveObject> activeObject;
-    Player player;
+    public Player player;
     FoW fow;
     Lives lives;
 
@@ -36,12 +37,20 @@ public class GameWorld implements IGameWorld {
     }
 
 
-    void addPassiveObject(PassiveObject passiveObject) {
+    public void addPassiveObject(PassiveObject passiveObject) {
         this.passiveObject.add(passiveObject);
     }
 
-    void addActiveObject(ActiveObject activeObject) {
+    public void addActiveObject(ActiveObject activeObject) {
         this.activeObject.add(activeObject);
+    }
+
+    public List<ActiveObject> getActiveObject() {
+        return Collections.unmodifiableList(this.activeObject);
+    }
+
+    public List<PassiveObject> getPassiveObject() {
+        return Collections.unmodifiableList(this.passiveObject);
     }
 
     List<GameObject> allObjects() {
