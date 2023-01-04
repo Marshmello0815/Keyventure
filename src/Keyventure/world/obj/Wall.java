@@ -10,10 +10,17 @@ public class Wall extends PassiveObject{
         super(world, x, y, size , size);
     }
 
+    /**
+     * Ruft die Methode "playerTouchWall()" in der Klasse "GameWorld" auf, bei Kollision des Spielers mit einer Wand
+     */
     public void kollisionWithPlayer(){
         world.playerTouchWall(this);
     }
 
+    /**
+     * Symbolisches zeichnen des Spielers als Rechteck
+     * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden zum Zeichnen
+     */
     @Override
     public void draw(PApplet app) {
         app.pushStyle();

@@ -11,6 +11,9 @@ public class GameWorldCreator {
         this.gameWorld = world;//Perfekter Ort für Konstruktor-Dinge
     }
 
+    /**
+     * Initiiert das Spiel (Fügt alle Objekte dem Spiel hinzu)
+     */
     public void initGameWorld (){
         int wallSize = 40;
         Player player = new Player(gameWorld, wallSize*25+wallSize/4, gameHeight-wallSize);
@@ -196,15 +199,29 @@ public class GameWorldCreator {
         // Initiator
     }
 
+    /**
+     * Setzt spielfeldhöhe und Spielfeldbreite
+     * @param width Spielfeldbreite
+     * @param height Spielfeldhöhe
+     */
     public void setEnv(int width, int height) {
         this.gameWidth = width;
         this.gameHeight = height;
     }
 
+    /**
+     * Gibt die Spielfeldbreite zurück
+     * @return Spielfeldbreite
+     */
     public int getGameWidth() {
         return gameWidth;
     }
 
+    /**
+     * Gibt die Spielfeldhöhe zurück
+     * @return Spielfeldhöhe
+     *
+     */
     public int getGameHeight() {
         return gameHeight;
     }

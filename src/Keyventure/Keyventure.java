@@ -9,6 +9,11 @@ import java.util.List;
 
 import static java.awt.event.KeyEvent.*;
 
+/**
+ * Keyventure
+ * @author Louisa Veeck, Serkan Erdogan
+ */
+
 public class Keyventure extends PApplet {
 
     GameWorld world;
@@ -42,6 +47,9 @@ public class Keyventure extends PApplet {
         world.draw(this);
     }
 
+    /**
+     * Bewegung des Spielers nach oben/links/unten/rechts in Abhängigkeit der zuletzt gedrückten Taste (w, a, s, d bzw. Pfeiltaste oben, links, unten, rechts)
+     */
     private void processInput() {
         if (keyLastPressed.size() > 0) {
             if (keyLastPressed.get(0) == VK_UP || keyLastPressed.get(0) == VK_W) {

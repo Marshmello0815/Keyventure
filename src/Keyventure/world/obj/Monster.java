@@ -25,11 +25,17 @@ public class Monster extends ActiveObject {
         return direction;
     }
 
+    /**
+     * Ruft die Methode "monsterTouchWall()" in der Klasse "GameWorld" auf, bei Kollision des Monsters mit einer Wand
+     */
     @Override
     public void kollisionWithWall() {
         world.monsterTouchWall(this);
     }
 
+    /**
+     * Änderung der Bewegungsrichtung eines Monsters
+     */
     public void changeDirection(){
         int zufall = random.nextInt(2);
         if (zufall == 1) {
@@ -38,6 +44,9 @@ public class Monster extends ActiveObject {
         }
     }
 
+    /**
+     * Führt die reguläre Bewegung des Monsters durch (Richtungsabhängig).
+     */
     @Override
     public void move(){
         if(direction == 0){
@@ -54,6 +63,10 @@ public class Monster extends ActiveObject {
         }
     }
 
+    /**
+     * Symbolisches zeichnen des Monsters als Rechteck
+     * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden zum Zeichnen
+     */
     @Override
     public void draw(PApplet app) {
         app.pushStyle();

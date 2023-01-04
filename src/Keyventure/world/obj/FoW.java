@@ -10,6 +10,10 @@ public class FoW {
         this.player = player;
     }
 
+    /**
+     * Zeichnen des Fog of War mit einer Kontur
+     * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden zum Zeichnen
+     */
     public void draw(PApplet app) {
         app.pushStyle();
         app.beginShape();

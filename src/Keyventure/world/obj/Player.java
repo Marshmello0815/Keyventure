@@ -14,27 +14,53 @@ public class Player extends GameObject {
 
     }
 
+    /**
+     * Führt die reguläre Bewegung des Spielers nach oben durch
+     */
     public void up(){
          y -= STEP_SIZE;
     }
+
+    /**
+     * Führt die reguläre Bewegung des Spielers nach unten durch
+     */
     public void down(){
          y += STEP_SIZE;
     }
+
+    /**
+     * Führt die reguläre Bewegung des Spielers nach rechts durch
+     */
     public void right(){
          x += STEP_SIZE;
     }
+
+    /**
+     * Führt die reguläre Bewegung des Spielers nach links durch
+     */
     public void left(){
          x -= STEP_SIZE;
     }
 
+    /**
+     * Gibt eine Zahl zwischen 0 und CYCLES_INVISIBILITY zurück, welche beschreibt ob der Spieler unsichtbar sein soll
+     * @return Zahl zwischen 0 und CYCLES_INVISIBILITY
+     */
     public int getInvisible() {
         return invisible;
     }
 
+    /**
+     * Setzt das Attribut "invisible" auf den höheren Wert zwischen "invisible" und "CYCLES_INVISIBILITY"
+     */
     public void makeInvisible() {
         this.invisible = Math.max(this.invisible, CYCLES_INVISIBILITY);
     }
 
+    /**
+     * Symbolisches zeichnen des Spielers als Rechteck. Macht Spieler ggf. unsichtbar
+     * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden zum Zeichnen
+     */
     @Override
     public void draw(PApplet app) {
 

@@ -36,23 +36,42 @@ public class GameWorld implements IGameWorld {
         activeObject = new ArrayList<>();
     }
 
-
+    /**
+     * Fügt der Liste von passiven Objekten ein passives Objekt hinzu
+     * @param passiveObject das hinzuzufügende passive Objekt
+     */
     public void addPassiveObject(PassiveObject passiveObject) {
         this.passiveObject.add(passiveObject);
     }
 
+    /**
+     * Fügt der Liste von aktiven Objekten ein aktives Objekt hinzu
+     * @param activeObject das hinzuzufügende aktive Objekt
+     */
     public void addActiveObject(ActiveObject activeObject) {
         this.activeObject.add(activeObject);
     }
 
+    /**
+     * Gibt alle aktiven Objekte in Form einer nicht modifizierbaren Liste zurück
+     * @return unmodifizierbare Liste aktiver Objekte
+     */
     public List<ActiveObject> getActiveObject() {
         return Collections.unmodifiableList(this.activeObject);
     }
 
+    /**
+     * Gibt alle passiven Objekte in Form einer nicht modifizierbaren Liste zurück
+     * @return unmodifizierbare Liste passiver Objekte
+     */
     public List<PassiveObject> getPassiveObject() {
         return Collections.unmodifiableList(this.passiveObject);
     }
 
+    /**
+     * Erstellt eine Liste aller Objekte des Spiels und gibt diese anschließend zurück
+     * @return Liste aller Objekte des Spiels
+     */
     List<GameObject> allObjects() {
         List<GameObject> objects = new ArrayList<>();
         objects.addAll(passiveObject);
@@ -63,6 +82,10 @@ public class GameWorld implements IGameWorld {
     }
 
 
+    /**
+     * Zeichnet Hintergrund und alle Objekte des Spiels und prüft darüber hinaus alle möglichen Kollisionen
+     * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden zum Zeichnen
+     */
     public void draw(PApplet app) {
         app.background(200, 200, 200);
         for (GameObject object : this.allObjects()) {
@@ -112,11 +135,18 @@ public class GameWorld implements IGameWorld {
         //zeichnen uiiiiiiii
     }
 
+    /**
+     * Macht den Spieler unsichtbar
+     */
     @Override
     public void makePlayerInvisible() {
         this.player.makeInvisible();
     }
 
+    /**
+     * Bewegung aller aktiven Objekte und Änderung der Bewegungsrichtung der Monster alle 3 Sekunden
+     * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden um die Zeit seit Spielbeginn zu erhalten
+     */
     public void move(PApplet app) {
         moveMonster();
         if ((app.millis() / 1000) % 3 == 0) {
@@ -134,17 +164,29 @@ public class GameWorld implements IGameWorld {
         }
     }
 
+    /**
+     * Entfernen des Schlüssels aus der Liste passiver Objekten und setzen des Parameters "hasKey" auf "true"
+     * @param key Der Schlüssel der aus der Liste entfernt werden soll
+     */
     @Override
     public void pickKey(Key key) {
         this.passiveObject.remove(key);
         hasKey = true;
     }
 
+    /**
+     * Bewegt Spieler um einen Schritt zurück, bei Kollision mit einer Wand
+     * @param wall Die Wand mit welcher der Spieler kollidiert
+     */
     @Override
     public void playerTouchWall(Wall wall) {
         movePlayerBack();
     }
 
+    /**
+     * Prüft ob Spieler den Schlüssel besitzt und lässt Spieler bei Kollision mit Tür ggf. gewinnen
+     * @param door Die Tür mit welcher der Spieler kollidiert
+     */
     @Override
     public void enterDoor(Door door) {
         if (!hasKey) {
@@ -155,6 +197,10 @@ public class GameWorld implements IGameWorld {
         }
     }
 
+    /**
+     * Bewegt Monster um zwei Einheiten zurück, bei Kollision mit einer Wand und verändert anschließend die Bewegungsrichtung in eine zufällige andere Richtung
+     * @param monster Das Monster welches mit einer Wand kollidiert
+     */
     @Override
     public void monsterTouchWall(Monster monster) {
         int oldDirection = monster.getDirection();
@@ -174,6 +220,9 @@ public class GameWorld implements IGameWorld {
         monster.setDirection(direction);
     }
 
+    /**
+     * Bewegt alle Monster und macht Kollisionsprüfung der Monster mit einer Wand
+     */
     private void moveMonster() {
         for (ActiveObject aObject : this.activeObject) {
             aObject.move();
@@ -187,6 +236,9 @@ public class GameWorld implements IGameWorld {
         }
     }
 
+    /**
+     * Bewegt Spieler um einen Schritt zurück
+     */
     private void movePlayerBack() {
         if (up) {
             this.player.down();
@@ -202,6 +254,9 @@ public class GameWorld implements IGameWorld {
         }
     }
 
+    /**
+     * Bewegt Spieler nach oben und setzt nur den dementsprechenden Parameter auf "ture"
+     */
     public void playerUp() {
         this.player.up();
         up = true;
@@ -210,6 +265,9 @@ public class GameWorld implements IGameWorld {
         right = false;
     }
 
+    /**
+     * Bewegt Spieler nach unten und setzt nur den dementsprechenden Parameter auf "ture"
+     */
     public void playerDown() {
         this.player.down();
         down = true;
@@ -218,6 +276,9 @@ public class GameWorld implements IGameWorld {
         right = false;
     }
 
+    /**
+     * Bewegt Spieler nach links und setzt nur den dementsprechenden Parameter auf "ture"
+     */
     public void playerLeft() {
         this.player.left();
         left = true;
@@ -226,6 +287,9 @@ public class GameWorld implements IGameWorld {
         right = false;
     }
 
+    /**
+     * Bewegt Spieler nach links und setzt nur den dementsprechenden Parameter auf "ture"
+     */
     public void playerRight() {
         this.player.right();
         right = true;
