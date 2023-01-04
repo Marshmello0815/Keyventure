@@ -17,10 +17,18 @@ public class Monster extends ActiveObject {
         direction = random.nextInt(4);
     }
 
+    /**
+     * Setzt die Bewegungsrichtung des Monsters
+     * @param direction Die neue Bewegungsrichtung des Monsters
+     */
     public void setDirection(int direction) {
         this.direction = direction;
     }
 
+    /**
+     * Gibt die aktuelle Bewegungsrichtung des Monsters als Zahl zurück (0: nach rechts, 1: nach links, 2: nach unten, 3: nach oben)
+     * @return Aktuelle Bewegungsrichtung des Monsters
+     */
     public int getDirection() {
         return direction;
     }
