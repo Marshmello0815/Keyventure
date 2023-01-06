@@ -157,4 +157,29 @@ public class GameWorldTest extends PApplet {
         assertEquals(10 + Player.STEP_SIZE, world.player.getX());
     }
 
+    @Test
+    public void TestIsDevMode() {
+        GameWorld world = new GameWorld();
+        assertFalse(world.isDevMode());
+    }
+
+    @Test
+    public void TestSetDevMode() {
+        GameWorld world = new GameWorld();
+        world.setDevMode(true);
+        assertTrue(world.isDevMode());
+    }
+
+    @Test
+    public void TestIsFowOn() {
+        GameWorld world = new GameWorld();
+        assertTrue(world.isFowOn());
+    }
+
+    @Test
+    public void TestSetFowOn() {
+        GameWorld world = new GameWorld();
+        world.setFowOn(false);
+        assertFalse(world.isFowOn());
+    }
 }

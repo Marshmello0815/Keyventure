@@ -6,6 +6,7 @@ import processing.core.PApplet;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static java.awt.event.KeyEvent.*;
 
@@ -19,11 +20,14 @@ public class Keyventure extends PApplet {
     GameWorld world;
     GameWorldCreator creator;
     List<Integer> keyLastPressed;
+    List<Integer> keyPressedDevMode;
+
 
     public Keyventure() {
         world = new GameWorld();
         creator = new GameWorldCreator(world);
         keyLastPressed = new ArrayList<>();
+        keyPressedDevMode = new ArrayList<>();
     }
 
     @Override
@@ -65,6 +69,10 @@ public class Keyventure extends PApplet {
                 world.playerRight();
             }
         }
+
+        if (keyPressedDevMode.size() == 2 && !Objects.equals(keyPressedDevMode.get(0), keyPressedDevMode.get(1))){
+            world.devMode = true;
+        }
     }
 
     public void keyPressed() {
@@ -74,12 +82,31 @@ public class Keyventure extends PApplet {
             }
             keyLastPressed.add(keyCode);
         }
+
+        if (keyCode == VK_CONTROL || keyCode == VK_F1){
+            keyPressedDevMode.add(keyCode);
+        }
+
+        if (world.isDevMode()) {
+            if (keyCode == VK_F1 && keyPressedDevMode.size() == 1){
+                world.devMode = false;
+            }
+
+            if (keyCode == VK_F2){
+                world.setFowOn(!world.isFowOn());
+            }
+        }
     }
 
     public void keyReleased() {
         if (keyCode == VK_UP || keyCode == VK_W || keyCode == VK_LEFT || keyCode == VK_A || keyCode == VK_DOWN || keyCode == VK_S || keyCode == VK_RIGHT || keyCode == VK_D) {
-            keyLastPressed.removeIf(keytime -> keytime == keyCode);
+            keyLastPressed.removeIf(key -> key == keyCode);
         }
+
+        if (keyCode == VK_CONTROL || keyCode == VK_F1){
+            keyPressedDevMode.removeIf(key -> key == keyCode);
+        }
+
     }
 }
 

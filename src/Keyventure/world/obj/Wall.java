@@ -3,17 +3,17 @@ package Keyventure.world.obj;
 import Keyventure.world.IGameWorld;
 import processing.core.PApplet;
 
-public class Wall extends PassiveObject{
+public class Wall extends PassiveObject {
 
 
-    public Wall(IGameWorld world, int x, int y , int size) {
-        super(world, x, y, size , size);
+    public Wall(IGameWorld world, int x, int y, int size) {
+        super(world, x, y, size, size);
     }
 
     /**
      * Ruft die Methode "playerTouchWall()" in der Klasse "GameWorld" auf, bei Kollision des Spielers mit einer Wand
      */
-    public void kollisionWithPlayer(){
+    public void kollisionWithPlayer() {
         world.playerTouchWall(this);
     }
 
@@ -23,8 +23,10 @@ public class Wall extends PassiveObject{
      */
     @Override
     public void draw(PApplet app) {
-        app.pushStyle();
-        app.rect(x, y, width, height);
-        app.popStyle();
+        if (world.isDevMode()) {
+            app.pushStyle();
+            super.draw(app);
+            app.popStyle();
+        }
     }
 }

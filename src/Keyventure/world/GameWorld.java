@@ -17,6 +17,8 @@ public class GameWorld implements IGameWorld {
     Lives lives;
 
     Random random = new Random();
+    public boolean devMode = false;
+    public boolean fowOn = true;
 
     boolean hasKey = false;
     boolean gameWon = false;
@@ -91,7 +93,7 @@ public class GameWorld implements IGameWorld {
         for (GameObject object : this.allObjects()) {
             object.draw(app);
         }
-        //fow.draw(app);
+        fow.draw(app);
         for (PassiveObject pObject : this.passiveObject) {
             if (this.player.checkKollision(pObject)) {
                 pObject.kollisionWithPlayer();
@@ -298,4 +300,37 @@ public class GameWorld implements IGameWorld {
         up = false;
     }
 
+    /**
+     * Gibt zurück, ob sich das Spiel im Developer-Modus befindet
+     * @return Status über Developer-Modus (true - Developer-Modus. false - normaler Spielmodus)
+     */
+    @Override
+    public boolean isDevMode() {
+        return devMode;
+    }
+
+    /**
+     * Setzt den Developer-Modus auf den übergebenen Wert
+     * @param devMode Der boolesche Wert auf den der Developer-Modus gesetzt werden soll
+     */
+    public void setDevMode(boolean devMode) {
+        this.devMode = devMode;
+    }
+
+    /**
+     * Gibt zurück, ob der Fog of War angeschaltet ist
+     * @return Status über Fog of War (true - Fog of War an. false - Fog of war aus)
+     */
+    @Override
+    public boolean isFowOn() {
+        return fowOn;
+    }
+
+    /**
+     * Aktiviert / Deaktiviert den Fog of War
+     * @param fowOn Der boolesche Wert, der darüber entscheidet ob der Fog of War aktiviert/deaktiviert wird
+     */
+    public void setFowOn(boolean fowOn) {
+        this.fowOn = fowOn;
+    }
 }

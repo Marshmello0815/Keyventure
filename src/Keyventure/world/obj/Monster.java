@@ -77,9 +77,11 @@ public class Monster extends ActiveObject {
      */
     @Override
     public void draw(PApplet app) {
-        app.pushStyle();
-        app.fill(20,200,20);
-        app.rect(x, y, width, height);
-        app.popStyle();
+        if(world.isDevMode()) {
+            app.pushStyle();
+            app.fill(20, 200, 20);
+            super.draw(app);
+            app.popStyle();
+        }
     }
 }

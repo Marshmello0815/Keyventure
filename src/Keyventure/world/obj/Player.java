@@ -69,9 +69,11 @@ public class Player extends GameObject {
             return;
         }
 
-        app.pushStyle();
-        app.rect(x, y, width, height);
-        app.popStyle();
+        if(world.isDevMode()) {
+            app.pushStyle();
+            super.draw(app);
+            app.popStyle();
+        }
     }
 
 }

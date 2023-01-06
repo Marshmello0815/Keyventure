@@ -23,8 +23,10 @@ public class Door extends PassiveObject {
      */
     @Override
     public void draw(PApplet app) {
-        app.pushStyle();
-        app.rect(x, y, width, height);
-        app.popStyle();
+        if(world.isDevMode()) {
+            app.pushStyle();
+            super.draw(app);
+            app.popStyle();
+        }
     }
 }

@@ -12,4 +12,6 @@ public interface IGameWorld {
     void enterDoor(Door door);
     void monsterTouchWall(Monster monster);
     void makePlayerInvisible();
+    boolean isDevMode();
+    boolean isFowOn();
 }

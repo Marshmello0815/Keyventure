@@ -79,7 +79,7 @@ public abstract class GameObject {
     }
 
     /**
-     * Symbolisches zeichnen des Objekts als Rechteck
+     * Symbolisches zeichnen des Objekts als Rechteck (Hitbox)
      * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden zum Zeichnen
      */
     public void draw(PApplet app) {
