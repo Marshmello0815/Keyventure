@@ -2,12 +2,14 @@ package Keyventure.world.obj;
 
 import Keyventure.world.IGameWorld;
 
-public abstract class ActiveObject extends GameObject{
+public abstract class ActiveObject extends GameObject {
     public ActiveObject(IGameWorld world, int x, int y, int width, int height) {
         super(world, x, y, width, height);
     }
 
     public abstract void move();
-    public abstract void kollisionWithWall();
+
+    public abstract void kollisionWithNotPlayerObject();
+
     public abstract void changeDirection();
 }

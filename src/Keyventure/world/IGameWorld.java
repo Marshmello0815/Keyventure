@@ -8,10 +8,17 @@ import Keyventure.world.obj.Wall;
 public interface IGameWorld {
 
     void pickKey(Key key);
+
     void playerTouchWall(Wall wall);
+
     void enterDoor(Door door);
+
     void monsterTouchWall(Monster monster);
+
     void makePlayerInvisible();
+
     boolean isDevMode();
+
     boolean isFowOn();
+
 }

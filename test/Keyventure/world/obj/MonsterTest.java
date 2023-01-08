@@ -28,7 +28,7 @@ public class MonsterTest {
         GameWorld world = new GameWorld();
         Monster monster = new Monster(world, 10,10);
         monster.setDirection(1);
-        monster.kollisionWithWall();
+        monster.kollisionWithNotPlayerObject();
         assertEquals(10 + Monster.STEP_SIZE,monster.getX());
     }
 

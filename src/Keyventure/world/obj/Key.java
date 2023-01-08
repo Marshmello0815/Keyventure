@@ -13,17 +13,18 @@ public class Key extends PassiveObject {
      * Ruft die Methode "pickKey()" in der Klasse "GameWorld" auf, bei Kollision des Spielers mit einem Schlüssel
      */
     @Override
-    public void kollisionWithPlayer(){
+    public void kollisionWithPlayer() {
         world.pickKey(this);
     }
 
     /**
      * Symbolisches zeichnen des Schlüssels als Rechteck
+     *
      * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden zum Zeichnen
      */
     @Override
     public void draw(PApplet app) {
-        if(world.isDevMode()) {
+        if (world.isDevMode()) {
             app.pushStyle();
             super.draw(app);
             app.popStyle();

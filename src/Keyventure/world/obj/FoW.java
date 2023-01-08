@@ -15,10 +15,11 @@ public class FoW {
 
     /**
      * Zeichnen des Fog of War mit einer Kontur
+     *
      * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden zum Zeichnen
      */
     public void draw(PApplet app) {
-            app.pushStyle();
+        app.pushStyle();
         if (world.isFowOn()) {
             app.beginShape();
             app.fill(0, 0, 0);
@@ -34,6 +35,6 @@ public class FoW {
             app.endContour();
             app.endShape();
         }
-            app.popStyle();
+        app.popStyle();
     }
 }

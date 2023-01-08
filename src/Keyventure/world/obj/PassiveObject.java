@@ -11,3 +11,4 @@ public abstract class PassiveObject extends GameObject {
     public abstract void kollisionWithPlayer();
 
 }
+

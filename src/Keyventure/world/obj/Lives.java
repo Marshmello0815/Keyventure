@@ -20,6 +20,7 @@ public class Lives extends GameObject {
 
     /**
      * Gibt Anzahl der Leben zurück
+     *
      * @return Anzahl der Leben
      */
     public int getLives() {
@@ -28,6 +29,7 @@ public class Lives extends GameObject {
 
     /**
      * Setzt Anzahl der Leben auf den übergebenen Wert
+     *
      * @param lives Der Wert auf den die Anzahl der Leben gesetzt werden soll
      */
     public void setLives(int lives) {
@@ -36,6 +38,7 @@ public class Lives extends GameObject {
 
     /**
      * Gibt Anzahl der verlorenen Leben zurück
+     *
      * @return Anzahl der verlorenen Leben
      */
     public int getLostLives() {
@@ -44,6 +47,7 @@ public class Lives extends GameObject {
 
     /**
      * Setzt Anzahl der verlorenen Leben auf den übergebenen Wert
+     *
      * @param lostLives Der Wert auf den die Anzahl der verlorenen Leben gesetzt werden soll
      */
     public void setLostLives(int lostLives) {
@@ -52,6 +56,7 @@ public class Lives extends GameObject {
 
     /**
      * Zeichen der Leben mittels Bilder (volles Herz / leeres Herz)
+     *
      * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden zum Zeichnen
      */
     @Override

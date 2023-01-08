@@ -40,6 +40,7 @@ public class GameWorld implements IGameWorld {
 
     /**
      * Fügt der Liste von passiven Objekten ein passives Objekt hinzu
+     *
      * @param passiveObject das hinzuzufügende passive Objekt
      */
     public void addPassiveObject(PassiveObject passiveObject) {
@@ -48,6 +49,7 @@ public class GameWorld implements IGameWorld {
 
     /**
      * Fügt der Liste von aktiven Objekten ein aktives Objekt hinzu
+     *
      * @param activeObject das hinzuzufügende aktive Objekt
      */
     public void addActiveObject(ActiveObject activeObject) {
@@ -56,6 +58,7 @@ public class GameWorld implements IGameWorld {
 
     /**
      * Gibt alle aktiven Objekte in Form einer nicht modifizierbaren Liste zurück
+     *
      * @return unmodifizierbare Liste aktiver Objekte
      */
     public List<ActiveObject> getActiveObject() {
@@ -64,6 +67,7 @@ public class GameWorld implements IGameWorld {
 
     /**
      * Gibt alle passiven Objekte in Form einer nicht modifizierbaren Liste zurück
+     *
      * @return unmodifizierbare Liste passiver Objekte
      */
     public List<PassiveObject> getPassiveObject() {
@@ -72,6 +76,7 @@ public class GameWorld implements IGameWorld {
 
     /**
      * Erstellt eine Liste aller Objekte des Spiels und gibt diese anschließend zurück
+     *
      * @return Liste aller Objekte des Spiels
      */
     List<GameObject> allObjects() {
@@ -86,52 +91,133 @@ public class GameWorld implements IGameWorld {
 
     /**
      * Zeichnet Hintergrund und alle Objekte des Spiels und prüft darüber hinaus alle möglichen Kollisionen
+     *
      * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden zum Zeichnen
      */
     public void draw(PApplet app) {
-        app.background(200, 200, 200);
-        for (GameObject object : this.allObjects()) {
-            object.draw(app);
-        }
-        fow.draw(app);
-        for (PassiveObject pObject : this.passiveObject) {
-            if (this.player.checkKollision(pObject)) {
-                pObject.kollisionWithPlayer();
+
+        if (!gameLose && !gameWon) {
+            app.background(200, 200, 200);
+            for (GameObject object : this.allObjects()) {
+                object.draw(app);
             }
-        }
-        for (ActiveObject aObject : this.activeObject) {
-            if (this.player.checkKollision(aObject)) {
-                if (countKollisionWithMonster == 0 && lives.getLives() > 0) {
-                    lives.setLives(lives.getLives() - 1);
-                    lives.setLostLives(lives.getLostLives() + 1);
-                    makePlayerInvisible();
-                    countKollisionWithMonster += 1;
-                }
-                if (lives.getLives() == 0) {
-                    gameLose = true;
+
+            fow.draw(app);
+
+            for (PassiveObject pObject : this.passiveObject) {
+                if (this.player.checkKollision(pObject)) {
+                    pObject.kollisionWithPlayer();
                 }
             }
-        }
-        if (countKollisionWithMonster > 0) {
-            countKollisionWithMonster += 1;
-            if (countKollisionWithMonster == invulnerableTime) {
-                countKollisionWithMonster = 0;
+
+            for (ActiveObject aObject : this.activeObject) {
+                if (this.player.checkKollision(aObject)) {
+                    if (countKollisionWithMonster == 0 && lives.getLives() > 0) {
+                        lives.setLives(lives.getLives() - 1);
+                        lives.setLostLives(lives.getLostLives() + 1);
+                        makePlayerInvisible();
+                        countKollisionWithMonster += 1;
+                    }
+                    if (lives.getLives() == 0) {
+                        gameLose = true;
+                    }
+                }
+            }
+
+            if (countKollisionWithMonster > 0) {
+                countKollisionWithMonster += 1;
+                if (countKollisionWithMonster == invulnerableTime) {
+                    countKollisionWithMonster = 0;
+                }
             }
         }
+
         if (gameLose) {
             app.pushStyle();
             app.fill(0, 0, 0);
-            //app.rect(0,0, app.width, app.height);
-            app.text("Game Over", (float) app.height / 2, (float) app.width / 2);
+            app.rect(0, 0, app.displayWidth, app.displayHeight);
+            app.fill(120, 120, 120);
+            app.text("Game Over", (float) (app.displayWidth / 5.5), (float) app.displayHeight / 2);
+            app.textSize(300);
             app.popStyle();
         }
 
         if (gameWon) {
-            app.pushStyle();
-            app.fill(0, 0, 0);
-            //app.rect(0,0, app.width, app.height);
-            app.text("Game Won", (float) app.height / 2, (float) app.width / 2);
-            app.popStyle();
+
+            if (app.millis() / 1000 % 8 == 0) {
+                app.pushStyle();
+                app.fill(200, 30, 30);
+                app.rect(0, 0, app.displayWidth, app.displayHeight);
+                app.fill(120, 120, 120);
+                app.text("Game Won", (float) (app.displayWidth / 5.5), (float) app.displayHeight / 2);
+                app.textSize(300);
+                app.popStyle();
+            }
+            if (app.millis() / 1000 % 8 == 1) {
+                app.pushStyle();
+                app.fill(200, 150, 30);
+                app.rect(0, 0, app.displayWidth, app.displayHeight);
+                app.fill(120, 120, 120);
+                app.text("Game Won", (float) (app.displayWidth / 5.5), (float) app.displayHeight / 2);
+                app.textSize(300);
+                app.popStyle();
+            }
+            if (app.millis() / 1000 % 8 == 2) {
+                app.pushStyle();
+                app.fill(240, 240, 20);
+                app.rect(0, 0, app.displayWidth, app.displayHeight);
+                app.fill(120, 120, 120);
+                app.text("Game Won", (float) (app.displayWidth / 5.5), (float) app.displayHeight / 2);
+                app.textSize(300);
+                app.popStyle();
+            }
+            if (app.millis() / 1000 % 8 == 3) {
+                app.pushStyle();
+                app.fill(30, 240, 30);
+                app.rect(0, 0, app.displayWidth, app.displayHeight);
+                app.fill(120, 120, 120);
+                app.text("Game Won", (float) (app.displayWidth / 5.5), (float) app.displayHeight / 2);
+                app.textSize(300);
+                app.popStyle();
+            }
+            if (app.millis() / 1000 % 8 == 4) {
+                app.pushStyle();
+                app.fill(20, 240, 240);
+                app.rect(0, 0, app.displayWidth, app.displayHeight);
+                app.fill(120, 120, 120);
+                app.text("Game Won", (float) (app.displayWidth / 5.5), (float) app.displayHeight / 2);
+                app.textSize(300);
+                app.popStyle();
+            }
+            if (app.millis() / 1000 % 8 == 5) {
+                app.pushStyle();
+                app.fill(30, 30, 240);
+                app.rect(0, 0, app.displayWidth, app.displayHeight);
+                app.fill(120, 120, 120);
+                app.text("Game Won", (float) (app.displayWidth / 5.5), (float) app.displayHeight / 2);
+                app.textSize(300);
+                app.popStyle();
+            }
+            if (app.millis() / 1000 % 8 == 6) {
+                app.pushStyle();
+                app.fill(140, 20, 240);
+                app.rect(0, 0, app.displayWidth, app.displayHeight);
+                app.fill(120, 120, 120);
+                app.text("Game Won", (float) (app.displayWidth / 5.5), (float) app.displayHeight / 2);
+                app.textSize(300);
+                app.popStyle();
+            }
+            if (app.millis() / 1000 % 8 == 7) {
+                app.pushStyle();
+                app.fill(240, 20, 240);
+                app.rect(0, 0, app.displayWidth, app.displayHeight);
+                app.fill(120, 120, 120);
+                app.text("Game Won", (float) (app.displayWidth / 5.5), (float) app.displayHeight / 2);
+                app.textSize(300);
+                app.popStyle();
+            }
+
+
         }
 
         //zeichnen uiiiiiiii
@@ -147,6 +233,7 @@ public class GameWorld implements IGameWorld {
 
     /**
      * Bewegung aller aktiven Objekte und Änderung der Bewegungsrichtung der Monster alle 3 Sekunden
+     *
      * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden um die Zeit seit Spielbeginn zu erhalten
      */
     public void move(PApplet app) {
@@ -160,14 +247,14 @@ public class GameWorld implements IGameWorld {
                     }
                 }
             }
-        }
-        else {
+        } else {
             changeDirectionPossible = true;
         }
     }
 
     /**
      * Entfernen des Schlüssels aus der Liste passiver Objekten und setzen des Parameters "hasKey" auf "true"
+     *
      * @param key Der Schlüssel der aus der Liste entfernt werden soll
      */
     @Override
@@ -178,6 +265,7 @@ public class GameWorld implements IGameWorld {
 
     /**
      * Bewegt Spieler um einen Schritt zurück, bei Kollision mit einer Wand
+     *
      * @param wall Die Wand mit welcher der Spieler kollidiert
      */
     @Override
@@ -187,6 +275,7 @@ public class GameWorld implements IGameWorld {
 
     /**
      * Prüft ob Spieler den Schlüssel besitzt und lässt Spieler bei Kollision mit Tür ggf. gewinnen
+     *
      * @param door Die Tür mit welcher der Spieler kollidiert
      */
     @Override
@@ -201,6 +290,7 @@ public class GameWorld implements IGameWorld {
 
     /**
      * Bewegt Monster um zwei Einheiten zurück, bei Kollision mit einer Wand und verändert anschließend die Bewegungsrichtung in eine zufällige andere Richtung
+     *
      * @param monster Das Monster welches mit einer Wand kollidiert
      */
     @Override
@@ -223,16 +313,26 @@ public class GameWorld implements IGameWorld {
     }
 
     /**
-     * Bewegt alle Monster und macht Kollisionsprüfung der Monster mit einer Wand
+     * Bewegt alle Monster und macht dabei Kollisionsprüfung der Monster mit allen Objekten außer dem Spieler
      */
     private void moveMonster() {
         for (ActiveObject aObject : this.activeObject) {
             aObject.move();
             for (PassiveObject pObject : this.passiveObject) {
                 if (aObject.checkKollision(pObject)) {
-                    if (pObject instanceof Wall) {
-                        aObject.kollisionWithWall();
+                    if (pObject instanceof Wall || pObject instanceof Door) {
+                        aObject.kollisionWithNotPlayerObject();
                     }
+                }
+            }
+        }
+        for (ActiveObject aObject1 : this.activeObject) {
+            for (ActiveObject aObject2 : this.activeObject) {
+                if (aObject1.equals(aObject2)) {
+                    break;
+                } else if (aObject1.checkKollision(aObject2)) {
+                    aObject1.kollisionWithNotPlayerObject();
+                    aObject2.kollisionWithNotPlayerObject();
                 }
             }
         }
@@ -302,6 +402,7 @@ public class GameWorld implements IGameWorld {
 
     /**
      * Gibt zurück, ob sich das Spiel im Developer-Modus befindet
+     *
      * @return Status über Developer-Modus (true - Developer-Modus. false - normaler Spielmodus)
      */
     @Override
@@ -311,6 +412,7 @@ public class GameWorld implements IGameWorld {
 
     /**
      * Setzt den Developer-Modus auf den übergebenen Wert
+     *
      * @param devMode Der boolesche Wert auf den der Developer-Modus gesetzt werden soll
      */
     public void setDevMode(boolean devMode) {
@@ -319,6 +421,7 @@ public class GameWorld implements IGameWorld {
 
     /**
      * Gibt zurück, ob der Fog of War angeschaltet ist
+     *
      * @return Status über Fog of War (true - Fog of War an. false - Fog of war aus)
      */
     @Override
@@ -328,6 +431,7 @@ public class GameWorld implements IGameWorld {
 
     /**
      * Aktiviert / Deaktiviert den Fog of War
+     *
      * @param fowOn Der boolesche Wert, der darüber entscheidet ob der Fog of War aktiviert/deaktiviert wird
      */
     public void setFowOn(boolean fowOn) {

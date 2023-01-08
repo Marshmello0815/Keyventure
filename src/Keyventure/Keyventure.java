@@ -12,6 +12,7 @@ import static java.awt.event.KeyEvent.*;
 
 /**
  * Keyventure
+ *
  * @author Louisa Veeck, Serkan Erdogan
  */
 
@@ -31,7 +32,7 @@ public class Keyventure extends PApplet {
     }
 
     @Override
-    public void setup(){
+    public void setup() {
         surface.setResizable(true);
     }
 
@@ -39,7 +40,7 @@ public class Keyventure extends PApplet {
     public void settings() {
         width = displayWidth;
         height = displayHeight;
-        size(width,height-120);
+        size(width, height - 120);
         creator.setEnv(width, height);
         creator.initGameWorld();
     }
@@ -70,7 +71,7 @@ public class Keyventure extends PApplet {
             }
         }
 
-        if (keyPressedDevMode.size() == 2 && !Objects.equals(keyPressedDevMode.get(0), keyPressedDevMode.get(1))){
+        if (keyPressedDevMode.size() == 2 && !Objects.equals(keyPressedDevMode.get(0), keyPressedDevMode.get(1))) {
             world.devMode = true;
         }
     }
@@ -83,16 +84,16 @@ public class Keyventure extends PApplet {
             keyLastPressed.add(keyCode);
         }
 
-        if (keyCode == VK_CONTROL || keyCode == VK_F1){
+        if (keyCode == VK_CONTROL || keyCode == VK_F1) {
             keyPressedDevMode.add(keyCode);
         }
 
         if (world.isDevMode()) {
-            if (keyCode == VK_F1 && keyPressedDevMode.size() == 1){
+            if (keyCode == VK_F1 && keyPressedDevMode.size() == 1) {
                 world.devMode = false;
             }
 
-            if (keyCode == VK_F2){
+            if (keyCode == VK_F2) {
                 world.setFowOn(!world.isFowOn());
             }
         }
@@ -103,7 +104,7 @@ public class Keyventure extends PApplet {
             keyLastPressed.removeIf(key -> key == keyCode);
         }
 
-        if (keyCode == VK_CONTROL || keyCode == VK_F1){
+        if (keyCode == VK_CONTROL || keyCode == VK_F1) {
             keyPressedDevMode.removeIf(key -> key == keyCode);
         }
 

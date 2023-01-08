@@ -19,6 +19,7 @@ public class Wall extends PassiveObject {
 
     /**
      * Symbolisches zeichnen des Spielers als Rechteck
+     *
      * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden zum Zeichnen
      */
     @Override
