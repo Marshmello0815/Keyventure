@@ -18,9 +18,10 @@ public class GameWorldCreator {
      * Initiiert das Spiel (Fügt alle Objekte dem Spiel hinzu)
      */
     public void initGameWorld() {
-        int wallSize = 40;
+        int wallSize = gameWidth/48;
         Player player = new Player(gameWorld, wallSize * 25 + wallSize / 4, gameHeight - wallSize);
         gameWorld.player = player;
+
 
         int numWallX = gameWidth / wallSize;
         int numWallY = gameHeight / wallSize;
