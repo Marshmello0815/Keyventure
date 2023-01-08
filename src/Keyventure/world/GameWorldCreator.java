@@ -193,7 +193,6 @@ public class GameWorldCreator {
         }
 
         gameWorld.passiveObject.add(new Key(gameWorld, (numWallX - 12) * wallSize - wallSize / 3, (numWallY - (numWallY - 4)) * wallSize));
-        gameWorld.addPassiveObject(new Key(gameWorld, 300, 450));
         gameWorld.addPassiveObject(new Door(gameWorld, wallSize * 3, 0, wallSize));
         gameWorld.fow = new FoW(gameWorld, player);
         gameWorld.lives = new Lives(gameWorld, 0, 0);
