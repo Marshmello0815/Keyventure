@@ -97,7 +97,7 @@ public class GameWorld implements IGameWorld {
     public void draw(PApplet app) {
 
         if (!gameLose && !gameWon) {
-            app.background(200, 200, 200);
+            app.background(0, 0, 0);
             for (GameObject object : this.allObjects()) {
                 object.draw(app);
             }

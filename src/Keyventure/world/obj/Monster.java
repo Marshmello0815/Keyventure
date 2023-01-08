@@ -2,6 +2,7 @@ package Keyventure.world.obj;
 
 import Keyventure.world.IGameWorld;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 import java.util.Random;
 
@@ -10,6 +11,7 @@ public class Monster extends ActiveObject {
     private int direction;
     private final Random random;
     public static final int STEP_SIZE = 2;
+    PImage MONSTERTEST = null;
 
     public Monster(IGameWorld world, int x, int y) {
         super(world, x, y, 30, 50);
@@ -86,5 +88,9 @@ public class Monster extends ActiveObject {
             super.draw(app);
             app.popStyle();
         }
+        if(MONSTERTEST == null){
+            MONSTERTEST = app.loadImage("/resource/MonsterFront_1.png");
+        }
+        app.image(MONSTERTEST, x , y, width, height);
     }
 }
