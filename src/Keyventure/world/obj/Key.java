@@ -6,7 +6,7 @@ import processing.core.PImage;
 
 public class Key extends PassiveObject {
 
-    PImage KEY;
+    PImage KEY = null;
 
     public Key(IGameWorld world, int x, int y) {
         super(world, x, y, 30, 30);
@@ -32,7 +32,9 @@ public class Key extends PassiveObject {
             super.draw(app);
             app.popStyle();
         }
-        KEY = app.loadImage("/resource/key.png");
+        if (KEY == null) {
+            KEY = app.loadImage("/resource/key.png");
+        }
         app.image(KEY, x , y, width, height);
     }
 }
