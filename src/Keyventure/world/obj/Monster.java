@@ -11,7 +11,14 @@ public class Monster extends ActiveObject {
     private int direction;
     private final Random random;
     public static final int STEP_SIZE = 2;
-    PImage MONSTERTEST = null;
+    PImage Back1 = null;
+    PImage Back2 = null;
+    PImage Front1 = null;
+    PImage Front2 = null;
+    PImage Right1 = null;
+    PImage Right2 = null;
+    PImage Left1 = null;
+    PImage Left2 = null;
 
     public Monster(IGameWorld world, int x, int y) {
         super(world, x, y, 30, 50);
@@ -81,16 +88,51 @@ public class Monster extends ActiveObject {
      * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden zum Zeichnen
      */
     @Override
-    public void draw(PApplet app) {
+    public void draw(PApplet app){
         if (world.isDevMode()) {
             app.pushStyle();
             app.fill(20, 200, 20);
             super.draw(app);
             app.popStyle();
         }
-        if(MONSTERTEST == null){
-            MONSTERTEST = app.loadImage("/resource/MonsterFront_1.png");
+        //funktioniert noch nicht zuverlässig
+        /*while(getDirection()==0){
+            if(Right1 == null){
+                Right1 = app.loadImage("/resource/MonsterRight_1.jpg");
+                Right2 = app.loadImage("/resource/MonsterRight_2.jpg");
+            }
+            app.image(Right1, x , y, width, height);
+            //app.image(Right2, x , y, width, height);
         }
-        app.image(MONSTERTEST, x , y, width, height);
+        while(getDirection()==1){
+            if(Left1 == null) {
+                Left1 = app.loadImage("/resource/MonsterLeft_1.jpg");
+                Left2 = app.loadImage("/resource/MonsterLeft_2.jpg");
+            }
+            app.image(Left1, x , y, width, height);
+            //app.image(Left2, x , y, width, height);
+        }
+        while(getDirection()==2){
+            if(Front1 == null){
+                Front1 = app.loadImage("/resource/MonsterFront_1.jpg");
+                Front2 = app.loadImage("/resource/MonsterFront_2.jpg");
+            }
+            app.image(Front1, x, y, width, height);
+            //app.image(Front2, x , y, width, height);
+        }
+        while(getDirection()==3){
+            if(Back1 == null){
+                Back1 = app.loadImage("/resource/MonsterBack_1.jpg");
+                Back2 = app.loadImage("/resource/MonsterBack_2.jpg");
+            }
+            app.image(Back1, x, y, width, height);
+            //app.image(Back2, x , y, width, height);
+        }
+
+         */
+
+
+
+
     }
 }
