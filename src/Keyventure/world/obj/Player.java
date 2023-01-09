@@ -20,6 +20,7 @@ public class Player extends GameObject {
         super(world, x, y, 25, 40);
 
     }
+
     /**
      * Gibt die aktuelle Bewegungsrichtung des Spielers als Zahl zurück (0: nach rechts, 1: nach links, 2: nach unten, 3: nach oben)
      *
