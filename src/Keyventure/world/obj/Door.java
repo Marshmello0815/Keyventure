@@ -2,11 +2,14 @@ package Keyventure.world.obj;
 
 import Keyventure.world.IGameWorld;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Door extends PassiveObject {
 
+    PImage DOOR = null;
+
     public Door(IGameWorld world, int x, int y, int size) {
-        super(world, x, y, size, size / 2);
+        super(world, x, y, size, (size / 3)*2);
     }
 
     /**
@@ -29,5 +32,9 @@ public class Door extends PassiveObject {
             super.draw(app);
             app.popStyle();
         }
+        if (DOOR == null) {
+            DOOR = app.loadImage("/resource/Door-locked.png");
+        }
+        app.image(DOOR, x , y, width, height);
     }
 }
