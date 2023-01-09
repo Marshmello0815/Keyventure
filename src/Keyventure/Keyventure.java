@@ -78,10 +78,7 @@ public class Keyventure extends PApplet {
 
     public void keyPressed() {
         if (keyCode == VK_UP || keyCode == VK_W || keyCode == VK_LEFT || keyCode == VK_A || keyCode == VK_DOWN || keyCode == VK_S || keyCode == VK_RIGHT || keyCode == VK_D) {
-            if (keyLastPressed.size() > 0) {
-                keyLastPressed.remove(0);
-            }
-            keyLastPressed.add(keyCode);
+            keyLastPressed.add(0, keyCode);
         }
 
         if (keyCode == VK_CONTROL || keyCode == VK_F1) {

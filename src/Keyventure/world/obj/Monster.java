@@ -9,9 +9,9 @@ import java.util.Random;
 
 public class Monster extends ActiveObject {
 
+    public static final int STEP_SIZE = 2;
     private Direction direction;
     final private Random random;
-    public static final int STEP_SIZE = 2;
     PImage Back1 = null;
     PImage Back2 = null;
     PImage Back3 = null;

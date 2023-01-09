@@ -7,8 +7,8 @@ import processing.core.PImage;
 
 public class Player extends GameObject {
 
-    public static final int CYCLES_INVISIBILITY = 90;
-    public static final int STEP_SIZE = 3;
+    public static final int CYCLES_INVISIBILITY = 45;
+    public static final int STEP_SIZE = 4;
     private int invisible = 0;
     private Direction direction = Direction.UP;
 

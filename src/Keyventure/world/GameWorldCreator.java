@@ -5,10 +5,12 @@ import Keyventure.world.obj.*;
 import java.util.Random;
 
 public class GameWorldCreator {
+    public static final int MONSTER_COUNT = 5;
     private int gameWidth;
     private int gameHeight;
     private GameWorld gameWorld;
     Random random = new Random();
+
 
     public GameWorldCreator(GameWorld world) {
         this.gameWorld = world;//Perfekter Ort für Konstruktor-Dinge
@@ -197,7 +199,7 @@ public class GameWorldCreator {
         gameWorld.addPassiveObject(new Door(gameWorld, wallSize * 3, 0, wallSize));
         gameWorld.fow = new FoW(gameWorld, player);
         gameWorld.lives = new Lives(gameWorld, 0, 0);
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < MONSTER_COUNT; i++) {
             boolean kollision = true;
             boolean noKollisionCheck = true;
             int xPos = random.nextInt(gameWidth);

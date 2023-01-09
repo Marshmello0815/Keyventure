@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class GameWorld implements IGameWorld {
+    public static final int INVULNERABLE_TIME = 45;
     List<PassiveObject> passiveObject;
     List<ActiveObject> activeObject;
     public Player player;
@@ -24,7 +25,6 @@ public class GameWorld implements IGameWorld {
     boolean changeDirectionPossible = false;
 
     int countKollisionWithMonster = 0;
-    int invulnerableTime = 90;
 
     boolean up = false;
     boolean down = false;
@@ -125,7 +125,7 @@ public class GameWorld implements IGameWorld {
 
             if (countKollisionWithMonster > 0) {
                 countKollisionWithMonster += 1;
-                if (countKollisionWithMonster == invulnerableTime) {
+                if (countKollisionWithMonster == INVULNERABLE_TIME) {
                     countKollisionWithMonster = 0;
                 }
             }
