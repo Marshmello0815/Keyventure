@@ -13,7 +13,7 @@ public interface IGameWorld {
 
     void enterDoor(Door door);
 
-    void monsterTouchWall(Monster monster);
+    void monsterTouchNotPlayerObject(Monster monster);
 
     void makePlayerInvisible();
 

@@ -6,7 +6,6 @@ import processing.core.PApplet;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 public class GameWorld implements IGameWorld {
     List<PassiveObject> passiveObject;
@@ -15,7 +14,6 @@ public class GameWorld implements IGameWorld {
     FoW fow;
     Lives lives;
 
-    Random random = new Random();
     public boolean devMode = false;
     public boolean fowOn = true;
 
@@ -273,19 +271,19 @@ public class GameWorld implements IGameWorld {
      * @param monster Das Monster welches mit einer Wand kollidiert
      */
     @Override
-    public void monsterTouchWall(Monster monster) {
-        int oldDirection = monster.getDirection();
-        int direction = random.nextInt(4);
-        if (oldDirection == 0) { //right
+    public void monsterTouchNotPlayerObject(Monster monster) {
+        Direction oldDirection = monster.getDirection();
+        Direction direction = Direction.getRandomDirection();
+        if (oldDirection == Direction.RIGHT) {
             monster.setX(monster.getX() - 2);
         }
-        if (oldDirection == 1) { //left
+        if (oldDirection == Direction.LEFT) {
             monster.setX(monster.getX() + 2);
         }
-        if (oldDirection == 2) { //down
+        if (oldDirection == Direction.DOWN) {
             monster.setY(monster.getY() - 2);
         }
-        if (oldDirection == 3) { //up
+        if (oldDirection == Direction.UP) {
             monster.setY(monster.getY() + 2);
         }
         monster.setDirection(direction);

@@ -1,5 +1,6 @@
 package Keyventure.world.obj;
 
+import Keyventure.world.Direction;
 import Keyventure.world.IGameWorld;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -8,8 +9,8 @@ import java.util.Random;
 
 public class Monster extends ActiveObject {
 
-    private int direction;
-    private final Random random;
+    private Direction direction;
+    final private Random random;
     public static final int STEP_SIZE = 2;
     PImage Back1 = null;
     PImage Back2 = null;
@@ -28,7 +29,7 @@ public class Monster extends ActiveObject {
     public Monster(IGameWorld world, int x, int y) {
         super(world, x, y, 30, 50);
         random = new Random();
-        direction = random.nextInt(4);
+        direction = Direction.getRandomDirection();
     }
 
     /**
@@ -36,7 +37,7 @@ public class Monster extends ActiveObject {
      *
      * @param direction Die neue Bewegungsrichtung des Monsters
      */
-    public void setDirection(int direction) {
+    public void setDirection(Direction direction) {
         this.direction = direction;
     }
 
@@ -45,7 +46,7 @@ public class Monster extends ActiveObject {
      *
      * @return Aktuelle Bewegungsrichtung des Monsters
      */
-    public int getDirection() {
+    public Direction getDirection() {
         return direction;
     }
 
@@ -54,7 +55,7 @@ public class Monster extends ActiveObject {
      */
     @Override
     public void kollisionWithNotPlayerObject() {
-        world.monsterTouchWall(this);
+        world.monsterTouchNotPlayerObject(this);
     }
 
     /**
@@ -63,7 +64,7 @@ public class Monster extends ActiveObject {
     public void changeDirection() {
         int zufall = random.nextInt(2);
         if (zufall == 1) {
-            int direction = random.nextInt(4);
+            Direction direction = Direction.getRandomDirection();
             this.setDirection(direction);
         }
     }
@@ -73,20 +74,20 @@ public class Monster extends ActiveObject {
      */
     @Override
     public void move() {
-        if (direction == 0) {
-            x += STEP_SIZE; //right
+        if (direction == Direction.RIGHT) {
+            x += STEP_SIZE;
             steps++;
         }
-        if (direction == 1) {
-            x -= STEP_SIZE; //left
+        if (direction == Direction.LEFT) {
+            x -= STEP_SIZE;
             steps++;
         }
-        if (direction == 2) {
-            y += STEP_SIZE; //down
+        if (direction == Direction.DOWN) {
+            y += STEP_SIZE;
             steps++;
         }
-        if (direction == 3) {
-            y -= STEP_SIZE; //up
+        if (direction == Direction.UP) {
+            y -= STEP_SIZE;
             steps++;
         }
     }
@@ -105,7 +106,7 @@ public class Monster extends ActiveObject {
             app.popStyle();
         }
         //funktioniert noch nicht zuverlässig
-        if (getDirection() == 0) {
+        if (getDirection() == Direction.RIGHT) {
             if (Right1 == null) {
                 Right1 = app.loadImage("/resource/monster/MonsterRight_1.jpg");
                 Right2 = app.loadImage("/resource/monster/MonsterRight_2.jpg");
@@ -122,7 +123,7 @@ public class Monster extends ActiveObject {
             }
 
         }
-        if (getDirection() == 1) {
+        if (getDirection() == Direction.LEFT) {
             if (Left1 == null) {
                 Left1 = app.loadImage("/resource/monster/MonsterLeft_1.jpg");
                 Left2 = app.loadImage("/resource/monster/MonsterLeft_2.jpg");
@@ -139,7 +140,7 @@ public class Monster extends ActiveObject {
             }
 
         }
-        if (getDirection() == 2) {
+        if (getDirection() == Direction.DOWN) {
             if (Front1 == null) {
                 Front1 = app.loadImage("/resource/monster/MonsterFront_1.jpg");
                 Front2 = app.loadImage("/resource/monster/MonsterFront_2.jpg");
@@ -155,7 +156,7 @@ public class Monster extends ActiveObject {
             }
             app.image(Front3, x, y, width, height);
         }
-        if (getDirection() == 3) {
+        if (getDirection() == Direction.UP) {
             if (Back1 == null) {
                 Back1 = app.loadImage("/resource/monster/MonsterBack_1.jpg");
                 Back2 = app.loadImage("/resource/monster/MonsterBack_2.jpg");
