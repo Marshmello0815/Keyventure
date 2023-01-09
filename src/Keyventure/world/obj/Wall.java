@@ -20,7 +20,7 @@ public class Wall extends PassiveObject {
     }
 
     /**
-     * Symbolisches zeichnen des Spielers als Rechteck
+     * Zeichnet die Wand. Zusätzlich im Developer-Modus: Symbolisches zeichnen der Wand als Rechteck (Hitbox).
      *
      * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden zum Zeichnen
      */

@@ -21,7 +21,7 @@ public class Door extends PassiveObject {
     }
 
     /**
-     * Symbolisches zeichnen der Tür als Rechteck
+     * Zeichnet die Tür. Zusätzlich im Developer-Modus: Symbolisches zeichnen der Tür als Rechteck (Hitbox).
      *
      * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden zum Zeichnen
      */

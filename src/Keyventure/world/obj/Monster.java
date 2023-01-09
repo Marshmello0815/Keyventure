@@ -92,7 +92,7 @@ public class Monster extends ActiveObject {
     }
 
     /**
-     * Symbolisches zeichnen des Monsters als Rechteck
+     * Zeichnet das Monster. Zusätzlich im Developer-Modus: Symbolisches zeichnen des Monsters als Rechteck (Hitbox).
      *
      * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden zum Zeichnen
      */

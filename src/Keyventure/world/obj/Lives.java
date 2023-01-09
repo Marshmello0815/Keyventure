@@ -55,7 +55,7 @@ public class Lives extends GameObject {
     }
 
     /**
-     * Zeichen der Leben mittels Bilder (volles Herz / leeres Herz)
+     * Zeichen der Leben (volles Herz / leeres Herz)
      *
      * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden zum Zeichnen
      */

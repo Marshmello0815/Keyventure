@@ -78,7 +78,7 @@ public class Player extends GameObject {
     }
 
     /**
-     * Symbolisches zeichnen des Spielers als Rechteck. Macht Spieler ggf. unsichtbar
+     * Zeichnet den Spieler. Zusätzlich im Developer-Modus: Symbolisches zeichnen des Spielers als Rechteck (Hitbox). Macht Spieler ggf. unsichtbar
      *
      * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden zum Zeichnen
      */

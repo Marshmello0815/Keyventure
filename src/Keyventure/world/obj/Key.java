@@ -21,7 +21,7 @@ public class Key extends PassiveObject {
     }
 
     /**
-     * Symbolisches zeichnen des Schlüssels als Rechteck
+     * Zeichnet den Schlüssel. Zusätzlich im Developer-Modus: Symbolisches zeichnen des Schlüssels als Rechteck (Hitbox).
      *
      * @param app Übergabe der Klasse PApplet zur Benutzung der Methoden zum Zeichnen
      */
