@@ -2,6 +2,7 @@ package Keyventure.world;
 
 import Keyventure.world.obj.*;
 import processing.core.PApplet;
+import processing.core.PConstants;
 
 
 import java.util.ArrayList;
@@ -101,8 +102,8 @@ public class GameWorld implements IGameWorld {
             for (GameObject object : this.allObjects()) {
                 object.draw(app);
             }
-
             fow.draw(app);
+            lives.draw(app);
 
             for (PassiveObject pObject : this.passiveObject) {
                 if (this.player.checkKollision(pObject)) {
@@ -137,7 +138,7 @@ public class GameWorld implements IGameWorld {
             app.fill(0, 0, 0);
             app.rect(0, 0, app.displayWidth, app.displayHeight);
             app.fill(120, 120, 120);
-            app.text("Game Over", (float) (app.displayWidth / 5.5), (float) app.displayHeight / 2);
+            app.text("Game Over", (float) (app.displayWidth/10), (float) app.displayHeight/2);
             app.textSize(300);
             app.popStyle();
         }
@@ -149,7 +150,7 @@ public class GameWorld implements IGameWorld {
                 app.fill(200, 30, 30);
                 app.rect(0, 0, app.displayWidth, app.displayHeight);
                 app.fill(120, 120, 120);
-                app.text("Game Won", (float) (app.displayWidth / 5.5), (float) app.displayHeight / 2);
+                app.text("Game Won", (float) (app.displayWidth/10), (float) app.displayHeight/2);
                 app.textSize(300);
                 app.popStyle();
             }
@@ -158,7 +159,7 @@ public class GameWorld implements IGameWorld {
                 app.fill(200, 150, 30);
                 app.rect(0, 0, app.displayWidth, app.displayHeight);
                 app.fill(120, 120, 120);
-                app.text("Game Won", (float) (app.displayWidth / 5.5), (float) app.displayHeight / 2);
+                app.text("Game Won", (float) (app.displayWidth/10), (float) app.displayHeight/2);
                 app.textSize(300);
                 app.popStyle();
             }
@@ -167,7 +168,7 @@ public class GameWorld implements IGameWorld {
                 app.fill(240, 240, 20);
                 app.rect(0, 0, app.displayWidth, app.displayHeight);
                 app.fill(120, 120, 120);
-                app.text("Game Won", (float) (app.displayWidth / 5.5), (float) app.displayHeight / 2);
+                app.text("Game Won", (float) (app.displayWidth / 10), (float) app.displayHeight / 2);
                 app.textSize(300);
                 app.popStyle();
             }
@@ -176,7 +177,7 @@ public class GameWorld implements IGameWorld {
                 app.fill(30, 240, 30);
                 app.rect(0, 0, app.displayWidth, app.displayHeight);
                 app.fill(120, 120, 120);
-                app.text("Game Won", (float) (app.displayWidth / 5.5), (float) app.displayHeight / 2);
+                app.text("Game Won", (float) (app.displayWidth / 10), (float) app.displayHeight / 2);
                 app.textSize(300);
                 app.popStyle();
             }
@@ -185,7 +186,7 @@ public class GameWorld implements IGameWorld {
                 app.fill(20, 240, 240);
                 app.rect(0, 0, app.displayWidth, app.displayHeight);
                 app.fill(120, 120, 120);
-                app.text("Game Won", (float) (app.displayWidth / 5.5), (float) app.displayHeight / 2);
+                app.text("Game Won", (float) (app.displayWidth / 10), (float) app.displayHeight / 2);
                 app.textSize(300);
                 app.popStyle();
             }
@@ -194,7 +195,7 @@ public class GameWorld implements IGameWorld {
                 app.fill(30, 30, 240);
                 app.rect(0, 0, app.displayWidth, app.displayHeight);
                 app.fill(120, 120, 120);
-                app.text("Game Won", (float) (app.displayWidth / 5.5), (float) app.displayHeight / 2);
+                app.text("Game Won", (float) (app.displayWidth / 10), (float) app.displayHeight / 2);
                 app.textSize(300);
                 app.popStyle();
             }
@@ -203,7 +204,7 @@ public class GameWorld implements IGameWorld {
                 app.fill(140, 20, 240);
                 app.rect(0, 0, app.displayWidth, app.displayHeight);
                 app.fill(120, 120, 120);
-                app.text("Game Won", (float) (app.displayWidth / 5.5), (float) app.displayHeight / 2);
+                app.text("Game Won", (float) (app.displayWidth / 10), (float) app.displayHeight / 2);
                 app.textSize(300);
                 app.popStyle();
             }
@@ -212,15 +213,11 @@ public class GameWorld implements IGameWorld {
                 app.fill(240, 20, 240);
                 app.rect(0, 0, app.displayWidth, app.displayHeight);
                 app.fill(120, 120, 120);
-                app.text("Game Won", (float) (app.displayWidth / 5.5), (float) app.displayHeight / 2);
+                app.text("Game Won", (float) (app.displayWidth / 10), (float) app.displayHeight / 2);
                 app.textSize(300);
                 app.popStyle();
             }
-
-
         }
-
-        //zeichnen uiiiiiiii
     }
 
     /**
