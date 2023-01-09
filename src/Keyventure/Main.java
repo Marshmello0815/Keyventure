@@ -1,6 +1,5 @@
 package Keyventure;
 
-import Keyventure.Keyventure;
 import processing.core.PApplet;
 
 public class Main {
