@@ -98,25 +98,25 @@ public class Player extends GameObject {
 
         if(getDirection()==0){
             if(Right3==null){
-                Right3 = app.loadImage("/resource/PlayerRight_3.png");
+                Right3 = app.loadImage("/resource/player/PlayerRight_3.png");
             }
             app.image(Right3, x, y, width, height);
         }
         if(getDirection()==1){
             if(Left3==null){
-                Left3 = app.loadImage("/resource/PlayerLeft_3.png");
+                Left3 = app.loadImage("/resource/player/PlayerLeft_3.png");
             }
             app.image(Left3, x, y, width, height);
         }
         if(getDirection()==2){
             if(Front3==null){
-                Front3 = app.loadImage("/resource/PlayerFront_3.png");
+                Front3 = app.loadImage("/resource/player/PlayerFront_3.png");
             }
             app.image(Front3, x, y, width, height);
         }
         if(getDirection()==3){
             if(Back3==null){
-                Back3 = app.loadImage("/resource/PlayerBack_3.png");
+                Back3 = app.loadImage("/resource/player/PlayerBack_3.png");
             }
             app.image(Back3, x, y, width, height);
         }

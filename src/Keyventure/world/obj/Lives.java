@@ -62,10 +62,10 @@ public class Lives extends GameObject {
     @Override
     public void draw(PApplet app) {
         if (healthFull == null) {
-            healthFull = app.loadImage("/resource/health-full.png");
+            healthFull = app.loadImage("/resource/health/health-full.png");
         }
         if (healthEmpty == null) {
-            healthEmpty = app.loadImage("/resource/health-empty.png");
+            healthEmpty = app.loadImage("/resource/health/health-empty.png");
         }
         for (int i = 0; i < lives; i++) {
             app.image(healthFull, x + i * width, y, width, height);

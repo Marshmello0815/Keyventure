@@ -2,8 +2,6 @@ package Keyventure.world;
 
 import Keyventure.world.obj.*;
 import processing.core.PApplet;
-import processing.core.PConstants;
-
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -102,6 +100,7 @@ public class GameWorld implements IGameWorld {
             for (GameObject object : this.allObjects()) {
                 object.draw(app);
             }
+
             fow.draw(app);
             lives.draw(app);
 
@@ -149,74 +148,57 @@ public class GameWorld implements IGameWorld {
                 app.pushStyle();
                 app.fill(200, 30, 30);
                 app.rect(0, 0, app.displayWidth, app.displayHeight);
-                app.fill(120, 120, 120);
-                app.text("Game Won", (float) (app.displayWidth/10), (float) app.displayHeight/2);
-                app.textSize(300);
                 app.popStyle();
             }
             if (app.millis() / 1000 % 8 == 1) {
                 app.pushStyle();
                 app.fill(200, 150, 30);
                 app.rect(0, 0, app.displayWidth, app.displayHeight);
-                app.fill(120, 120, 120);
-                app.text("Game Won", (float) (app.displayWidth/10), (float) app.displayHeight/2);
-                app.textSize(300);
                 app.popStyle();
             }
             if (app.millis() / 1000 % 8 == 2) {
                 app.pushStyle();
                 app.fill(240, 240, 20);
                 app.rect(0, 0, app.displayWidth, app.displayHeight);
-                app.fill(120, 120, 120);
-                app.text("Game Won", (float) (app.displayWidth / 10), (float) app.displayHeight / 2);
-                app.textSize(300);
                 app.popStyle();
             }
             if (app.millis() / 1000 % 8 == 3) {
                 app.pushStyle();
                 app.fill(30, 240, 30);
                 app.rect(0, 0, app.displayWidth, app.displayHeight);
-                app.fill(120, 120, 120);
-                app.text("Game Won", (float) (app.displayWidth / 10), (float) app.displayHeight / 2);
-                app.textSize(300);
                 app.popStyle();
             }
             if (app.millis() / 1000 % 8 == 4) {
                 app.pushStyle();
                 app.fill(20, 240, 240);
                 app.rect(0, 0, app.displayWidth, app.displayHeight);
-                app.fill(120, 120, 120);
-                app.text("Game Won", (float) (app.displayWidth / 10), (float) app.displayHeight / 2);
-                app.textSize(300);
                 app.popStyle();
             }
             if (app.millis() / 1000 % 8 == 5) {
                 app.pushStyle();
                 app.fill(30, 30, 240);
                 app.rect(0, 0, app.displayWidth, app.displayHeight);
-                app.fill(120, 120, 120);
-                app.text("Game Won", (float) (app.displayWidth / 10), (float) app.displayHeight / 2);
-                app.textSize(300);
                 app.popStyle();
             }
             if (app.millis() / 1000 % 8 == 6) {
                 app.pushStyle();
                 app.fill(140, 20, 240);
                 app.rect(0, 0, app.displayWidth, app.displayHeight);
-                app.fill(120, 120, 120);
-                app.text("Game Won", (float) (app.displayWidth / 10), (float) app.displayHeight / 2);
-                app.textSize(300);
                 app.popStyle();
             }
             if (app.millis() / 1000 % 8 == 7) {
                 app.pushStyle();
                 app.fill(240, 20, 240);
                 app.rect(0, 0, app.displayWidth, app.displayHeight);
-                app.fill(120, 120, 120);
-                app.text("Game Won", (float) (app.displayWidth / 10), (float) app.displayHeight / 2);
-                app.textSize(300);
                 app.popStyle();
             }
+            app.pushStyle();
+            app.fill(120, 120, 120);
+            app.text("Game Won", (float) (app.displayWidth / 10), (float) app.displayHeight / 2);
+            app.textSize(300);
+            app.popStyle();
+
+
         }
     }
 

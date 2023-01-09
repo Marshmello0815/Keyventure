@@ -33,7 +33,7 @@ public class Door extends PassiveObject {
             app.popStyle();
         }
         if (DOOR == null) {
-            DOOR = app.loadImage("/resource/Door-locked.png");
+            DOOR = app.loadImage("/resource/door/Door-locked.png");
         }
         app.image(DOOR, x , y, width, height);
     }

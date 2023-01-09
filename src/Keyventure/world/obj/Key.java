@@ -33,7 +33,7 @@ public class Key extends PassiveObject {
             app.popStyle();
         }
         if (KEY == null) {
-            KEY = app.loadImage("/resource/key.png");
+            KEY = app.loadImage("/resource/key/key.png");
         }
         app.image(KEY, x , y, width, height);
     }

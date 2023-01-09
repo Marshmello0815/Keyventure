@@ -33,7 +33,7 @@ public class Wall extends PassiveObject {
             app.popStyle();
         }
         if(WALL == null){
-            WALL = app.loadImage("/resource/Brick.png");
+            WALL = app.loadImage("/resource/wall/Brick.png");
         }
         app.image(WALL, x , y, width, height);
     }
