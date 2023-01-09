@@ -13,12 +13,17 @@ public class Monster extends ActiveObject {
     public static final int STEP_SIZE = 2;
     PImage Back1 = null;
     PImage Back2 = null;
+    PImage Back3 = null;
     PImage Front1 = null;
     PImage Front2 = null;
+    PImage Front3 = null;
     PImage Right1 = null;
     PImage Right2 = null;
+    PImage Right3 = null;
     PImage Left1 = null;
     PImage Left2 = null;
+    PImage Left3 = null;
+    private int steps=0;
 
     public Monster(IGameWorld world, int x, int y) {
         super(world, x, y, 30, 50);
@@ -33,6 +38,10 @@ public class Monster extends ActiveObject {
      */
     public void setDirection(int direction) {
         this.direction = direction;
+    }
+
+    public int getSteps(){
+        return this.steps;
     }
 
     /**
@@ -70,15 +79,19 @@ public class Monster extends ActiveObject {
     public void move() {
         if (direction == 0) {
             x += STEP_SIZE; //right
+            steps++;
         }
         if (direction == 1) {
             x -= STEP_SIZE; //left
+            steps++;
         }
         if (direction == 2) {
             y += STEP_SIZE; //down
+            steps++;
         }
         if (direction == 3) {
             y -= STEP_SIZE; //up
+            steps++;
         }
     }
 
@@ -96,40 +109,76 @@ public class Monster extends ActiveObject {
             app.popStyle();
         }
         //funktioniert noch nicht zuverlässig
-        /*while(getDirection()==0){
+        if (getDirection()==0){
             if(Right1 == null){
                 Right1 = app.loadImage("/resource/MonsterRight_1.jpg");
                 Right2 = app.loadImage("/resource/MonsterRight_2.jpg");
+                Right3 = app.loadImage("/resource/MonsterRight_3.jpg");
             }
-            app.image(Right1, x , y, width, height);
-            //app.image(Right2, x , y, width, height);
+            app.image(Right3, x, y, width, height);
+            if((steps/4)%2==0) {
+                app.image(Right1, x, y, width, height);
+                return;
+            }
+            if((steps/6)%3==0) {
+                app.image(Right2, x, y, width, height);
+                return;
+            }
+
         }
-        while(getDirection()==1){
+        if (getDirection()==1){
             if(Left1 == null) {
                 Left1 = app.loadImage("/resource/MonsterLeft_1.jpg");
                 Left2 = app.loadImage("/resource/MonsterLeft_2.jpg");
+                Left3 = app.loadImage("/resource/MonsterLeft_3.jpg");
             }
-            app.image(Left1, x , y, width, height);
-            //app.image(Left2, x , y, width, height);
+            app.image(Left3, x, y, width, height);
+            if((steps/4)%2==0) {
+                app.image(Left1, x, y, width, height);
+                return;
+            }
+            if((steps/6)%3==0 || steps%11==0 || steps%5==0) {
+                app.image(Left2, x, y, width, height);
+                return;
+            }
+
         }
-        while(getDirection()==2){
+        if (getDirection()==2){
             if(Front1 == null){
                 Front1 = app.loadImage("/resource/MonsterFront_1.jpg");
                 Front2 = app.loadImage("/resource/MonsterFront_2.jpg");
+                Front3 = app.loadImage("/resource/MonsterFront_3.jpg");
             }
-            app.image(Front1, x, y, width, height);
-            //app.image(Front2, x , y, width, height);
+            if((steps/4)%2==0) {
+                app.image(Front1, x, y, width, height);
+                return;
+            }
+            if((steps/6)%3==0) {
+                app.image(Front2, x, y, width, height);
+                return;
+            }
+            app.image(Front3, x, y, width, height);
         }
-        while(getDirection()==3){
+        if (getDirection()==3){
             if(Back1 == null){
                 Back1 = app.loadImage("/resource/MonsterBack_1.jpg");
                 Back2 = app.loadImage("/resource/MonsterBack_2.jpg");
+                Back3 = app.loadImage("/resource/MonsterBack_2.jpg");
             }
-            app.image(Back1, x, y, width, height);
-            //app.image(Back2, x , y, width, height);
+            if((steps/4)%2==0) {
+                app.image(Back1, x, y, width, height);
+                return;
+            }
+            if((steps/6)%3==0) {
+                app.image(Back2, x, y, width, height);
+                return;
+            }
+            app.image(Back3, x, y, width, height);
         }
 
-         */
+
+
+
 
 
 
