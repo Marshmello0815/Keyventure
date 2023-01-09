@@ -2,16 +2,31 @@ package Keyventure.world.obj;
 
 import Keyventure.world.IGameWorld;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Player extends GameObject {
 
     public static final int CYCLES_INVISIBILITY = 90;
     public static final int STEP_SIZE = 3;
     private int invisible = 0;
+    private int direction;
+
+    PImage Back3 = null;
+    PImage Front3 = null;
+    PImage Right3 = null;
+    PImage Left3 = null;
 
     public Player(IGameWorld world, int x, int y) {
         super(world, x, y, 20, 35);
 
+    }
+    /**
+     * Gibt die aktuelle Bewegungsrichtung des Spielers als Zahl zurück (0: nach rechts, 1: nach links, 2: nach unten, 3: nach oben)
+     *
+     * @return Aktuelle Bewegungsrichtung des Spielers
+     */
+    public int getDirection() {
+        return direction;
     }
 
     /**
@@ -19,6 +34,7 @@ public class Player extends GameObject {
      */
     public void up() {
         y -= STEP_SIZE;
+        direction = 3;
     }
 
     /**
@@ -26,6 +42,7 @@ public class Player extends GameObject {
      */
     public void down() {
         y += STEP_SIZE;
+        direction = 2;
     }
 
     /**
@@ -33,6 +50,7 @@ public class Player extends GameObject {
      */
     public void right() {
         x += STEP_SIZE;
+        direction = 0;
     }
 
     /**
@@ -40,6 +58,7 @@ public class Player extends GameObject {
      */
     public void left() {
         x -= STEP_SIZE;
+        direction = 1;
     }
 
     /**
@@ -76,6 +95,32 @@ public class Player extends GameObject {
             super.draw(app);
             app.popStyle();
         }
+
+        if(getDirection()==0){
+            if(Right3==null){
+                Right3 = app.loadImage("/resource/PlayerRight_3.png");
+            }
+            app.image(Right3, x, y, width, height);
+        }
+        if(getDirection()==1){
+            if(Left3==null){
+                Left3 = app.loadImage("/resource/PlayerLeft_3.png");
+            }
+            app.image(Left3, x, y, width, height);
+        }
+        if(getDirection()==2){
+            if(Front3==null){
+                Front3 = app.loadImage("/resource/PlayerFront_3.png");
+            }
+            app.image(Front3, x, y, width, height);
+        }
+        if(getDirection()==3){
+            if(Back3==null){
+                Back3 = app.loadImage("/resource/PlayerBack_3.png");
+            }
+            app.image(Back3, x, y, width, height);
+        }
+
     }
 
 }

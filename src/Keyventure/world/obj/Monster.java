@@ -40,10 +40,6 @@ public class Monster extends ActiveObject {
         this.direction = direction;
     }
 
-    public int getSteps(){
-        return this.steps;
-    }
-
     /**
      * Gibt die aktuelle Bewegungsrichtung des Monsters als Zahl zurück (0: nach rechts, 1: nach links, 2: nach unten, 3: nach oben)
      *
@@ -108,7 +104,7 @@ public class Monster extends ActiveObject {
             super.draw(app);
             app.popStyle();
         }
-        //funktioniert noch nicht zuverlässig
+
         if (getDirection()==0){
             if(Right1 == null){
                 Right1 = app.loadImage("/resource/MonsterRight_1.jpg");
