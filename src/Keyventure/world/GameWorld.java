@@ -2,6 +2,7 @@ package Keyventure.world;
 
 import Keyventure.world.obj.*;
 import processing.core.PApplet;
+import processing.core.PConstants;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -94,7 +95,7 @@ public class GameWorld implements IGameWorld {
     public void draw(PApplet app) {
 
         if (!gameLose && !gameWon) {
-            app.background(25, 25, 25);
+            app.background(0, 0, 0);
             for (GameObject object : this.allObjects()) {
                 object.draw(app);
             }
@@ -135,7 +136,8 @@ public class GameWorld implements IGameWorld {
             app.fill(0, 0, 0);
             app.rect(0, 0, app.displayWidth, app.displayHeight);
             app.fill(120, 120, 120);
-            app.text("Game Over", (float) (app.displayWidth/10), (float) app.displayHeight/2);
+            app.textAlign(PConstants.CENTER);
+            app.text("Game Over", (float) (app.displayWidth/2), (float) app.displayHeight/2);
             app.textSize(300);
             app.popStyle();
         }
@@ -192,7 +194,8 @@ public class GameWorld implements IGameWorld {
             }
             app.pushStyle();
             app.fill(120, 120, 120);
-            app.text("Game Won", (float) (app.displayWidth / 10), (float) app.displayHeight / 2);
+            app.textAlign(PConstants.CENTER);
+            app.text("Game Won", (float) (app.displayWidth / 2), (float) app.displayHeight / 2);
             app.textSize(300);
             app.popStyle();
 

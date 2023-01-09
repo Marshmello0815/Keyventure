@@ -22,7 +22,7 @@ public class FoW {
         app.pushStyle();
         if (world.isFowOn()) {
             app.beginShape();
-            app.fill(0, 0, 0);
+            app.fill(5, 5, 5);
             app.vertex(0, 0);
             app.vertex(0, app.height);
             app.vertex(app.width, app.height);
