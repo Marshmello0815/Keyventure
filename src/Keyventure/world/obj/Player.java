@@ -17,7 +17,7 @@ public class Player extends GameObject {
     PImage Left3 = null;
 
     public Player(IGameWorld world, int x, int y) {
-        super(world, x, y, 20, 35);
+        super(world, x, y, 25, 40);
 
     }
     /**

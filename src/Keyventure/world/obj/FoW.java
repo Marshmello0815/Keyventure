@@ -4,7 +4,7 @@ import Keyventure.world.GameWorld;
 import processing.core.PApplet;
 
 public class FoW {
-    private int radius = 100;
+    private int radius = 150;
     Player player;
     GameWorld world;
 
