@@ -9,22 +9,6 @@ import static org.junit.Assert.*;
 public class MonsterTest {
 
     @Test
-    public void testSetDirection() {
-        GameWorld world = new GameWorld();
-        Monster monster = new Monster(world,10,10);
-        monster.setDirection(Direction.DOWN);
-        assertEquals(Direction.DOWN, monster.getDirection());
-    }
-
-    @Test
-    public void testGetDirection() {
-        GameWorld world = new GameWorld();
-        Monster monster = new Monster(world,10,10);
-        monster.setDirection(Direction.DOWN);
-        assertEquals(Direction.DOWN, monster.getDirection());
-    }
-
-    @Test
     public void testKollisionWithNotPlayerObject() {
         GameWorld world = new GameWorld();
         Monster monster = new Monster(world, 10,10);

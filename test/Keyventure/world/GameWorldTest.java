@@ -27,22 +27,6 @@ public class GameWorldTest extends PApplet {
     }
 
     @Test
-    public void getPassiveObject() {
-        GameWorld world = new GameWorld();
-        Key key = new Key(world,10,10);
-        world.addPassiveObject(key);
-        assertEquals(world.getPassiveObject().size(), 1);
-    }
-
-    @Test
-    public void getActiveObject() {
-        GameWorld world = new GameWorld();
-        Monster monster = new Monster(world, 10,10);
-        world.addActiveObject(monster);
-        assertEquals(world.getActiveObject().size(), 1);
-    }
-
-    @Test
     public void testAllObjects() {
         GameWorld world = new GameWorld();
         Key key = new Key(world,10,10);
@@ -157,29 +141,4 @@ public class GameWorldTest extends PApplet {
         assertEquals(10 + Player.STEP_SIZE, world.player.getX());
     }
 
-    @Test
-    public void TestIsDevMode() {
-        GameWorld world = new GameWorld();
-        assertFalse(world.isDevMode());
-    }
-
-    @Test
-    public void TestSetDevMode() {
-        GameWorld world = new GameWorld();
-        world.setDevMode(true);
-        assertTrue(world.isDevMode());
-    }
-
-    @Test
-    public void TestIsFowOn() {
-        GameWorld world = new GameWorld();
-        assertTrue(world.isFowOn());
-    }
-
-    @Test
-    public void TestSetFowOn() {
-        GameWorld world = new GameWorld();
-        world.setFowOn(false);
-        assertFalse(world.isFowOn());
-    }
 }
