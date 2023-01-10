@@ -15,7 +15,7 @@ public class Wall extends PassiveObject {
     /**
      * Ruft die Methode "playerTouchWall()" in der Klasse "GameWorld" auf, bei Kollision des Spielers mit einer Wand
      */
-    public void kollisionWithPlayer() {
+    public void collisionWithPlayer() {
         world.playerTouchWall(this);
     }
 

@@ -14,7 +14,7 @@ public class KeyTest {
         Key key = new Key(world, 10, 10);
         world.addPassiveObject(key);
         world.playerUp();
-        key.kollisionWithPlayer();
+        key.collisionWithPlayer();
         assertEquals(world.getPassiveObject().size(), 0);
     }
 }

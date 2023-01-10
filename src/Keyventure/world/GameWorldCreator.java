@@ -5,7 +5,7 @@ import Keyventure.world.obj.*;
 import java.util.Random;
 
 public class GameWorldCreator {
-    public static final int MONSTER_COUNT = 5;
+    public static final int MONSTER_COUNT = 8;
     private int gameWidth;
     private int gameHeight;
     private GameWorld gameWorld;
@@ -195,7 +195,8 @@ public class GameWorldCreator {
             }
         }
 
-        gameWorld.passiveObject.add(new Key(gameWorld, (numWallX - 12) * wallSize - wallSize / 3, (numWallY - (numWallY - 4)) * wallSize));
+        gameWorld.passiveObject.add(new Key(gameWorld, (numWallX - 44) * wallSize - wallSize / 3, (numWallY - (numWallY - 16)) * wallSize));
+        gameWorld.passiveObject.add(new Weapon(gameWorld, (numWallX - 11) * wallSize - wallSize / 3, (numWallY - (numWallY - 11)) * wallSize));
         gameWorld.addPassiveObject(new Door(gameWorld, wallSize * 3, 0, wallSize));
         gameWorld.fow = new FoW(gameWorld, player);
         gameWorld.lives = new Lives(gameWorld, 0, 0);

@@ -16,7 +16,7 @@ public class Key extends PassiveObject {
      * Ruft die Methode "pickKey()" in der Klasse "GameWorld" auf, bei Kollision des Spielers mit einem Schlüssel
      */
     @Override
-    public void kollisionWithPlayer() {
+    public void collisionWithPlayer() {
         world.pickKey(this);
     }
 

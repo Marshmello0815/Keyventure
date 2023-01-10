@@ -8,7 +8,7 @@ public abstract class PassiveObject extends GameObject {
         super(world, x, y, width, height);
     }
 
-    public abstract void kollisionWithPlayer();
+    public abstract void collisionWithPlayer();
 
 }
 

@@ -1,13 +1,14 @@
 package Keyventure.world;
 
-import Keyventure.world.obj.Door;
-import Keyventure.world.obj.Key;
-import Keyventure.world.obj.Monster;
-import Keyventure.world.obj.Wall;
+import Keyventure.world.obj.*;
 
 public interface IGameWorld {
 
     void pickKey(Key key);
+
+    void pickWeapon(Weapon weapon);
+
+    void killMonster(ActiveObject monster);
 
     void playerTouchWall(Wall wall);
 

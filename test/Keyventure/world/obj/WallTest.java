@@ -15,7 +15,7 @@ public class WallTest {
         Wall wall = new Wall(world , 10, 10, 20);
         world.addPassiveObject(wall);
         world.playerUp();
-        wall.kollisionWithPlayer();
+        wall.collisionWithPlayer();
         assertEquals(10 + Player.STEP_SIZE, player.getY());
     }
 }

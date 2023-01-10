@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class Monster extends ActiveObject {
 
-    public static final int STEP_SIZE = 2;
+    public static final int STEP_SIZE = 5;
     private Direction direction;
     final private Random random;
     PImage Back1 = null;
@@ -54,9 +54,11 @@ public class Monster extends ActiveObject {
      * Ruft die Methode "monsterTouchWall()" in der Klasse "GameWorld" auf, bei Kollision des Monsters mit einer Wand
      */
     @Override
-    public void kollisionWithNotPlayerObject() {
+    public void collisionWithNotPlayerObject() {
         world.monsterTouchNotPlayerObject(this);
     }
+    @Override
+    public void collisionWithSword(){world.killMonster(this);}
 
     /**
      * Änderung der Bewegungsrichtung eines Monsters (Geschieht mit einer Wahrscheinlichkeit von ca. 50 %)

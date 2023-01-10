@@ -9,7 +9,9 @@ public abstract class ActiveObject extends GameObject {
 
     public abstract void move();
 
-    public abstract void kollisionWithNotPlayerObject();
+    public abstract void collisionWithNotPlayerObject();
+
+    public abstract void collisionWithSword();
 
     public abstract void changeDirection();
 }

@@ -12,6 +12,8 @@ public class GameWorld implements IGameWorld {
     public static final int INVULNERABLE_TIME = 45;
     List<PassiveObject> passiveObject;
     List<ActiveObject> activeObject;
+
+    List<ActiveObject> killedMonster;
     public Player player;
     FoW fow;
     Lives lives;
@@ -31,9 +33,12 @@ public class GameWorld implements IGameWorld {
     boolean left = false;
     boolean right = false;
 
+    boolean playerHasWeapon = false;
+
     public GameWorld() {
         passiveObject = new ArrayList<>();
         activeObject = new ArrayList<>();
+        killedMonster = new ArrayList<>();
     }
 
     /**
@@ -105,12 +110,14 @@ public class GameWorld implements IGameWorld {
 
             for (PassiveObject pObject : this.passiveObject) {
                 if (this.player.checkKollision(pObject)) {
-                    pObject.kollisionWithPlayer();
+                    pObject.collisionWithPlayer();
                 }
             }
 
-            for (ActiveObject aObject : this.activeObject) {
-                if (this.player.checkKollision(aObject)) {
+            for (ActiveObject aObject : getActiveObject()) {
+                if (this.player.checkKollision(aObject) && playerHasWeapon){
+                    killedMonster.add(aObject);
+                } else if (this.player.checkKollision(aObject) && !playerHasWeapon) {
                     if (countKollisionWithMonster == 0 && lives.getLives() > 0) {
                         lives.setLives(lives.getLives() - 1);
                         lives.setLostLives(lives.getLostLives() + 1);
@@ -123,6 +130,8 @@ public class GameWorld implements IGameWorld {
                 }
             }
 
+            activeObject.removeAll(killedMonster);
+
             if (countKollisionWithMonster > 0) {
                 countKollisionWithMonster += 1;
                 if (countKollisionWithMonster == INVULNERABLE_TIME) {
@@ -130,7 +139,6 @@ public class GameWorld implements IGameWorld {
                 }
             }
         }
-
         if (gameLose) {
             app.pushStyle();
             app.fill(0, 0, 0);
@@ -242,6 +250,15 @@ public class GameWorld implements IGameWorld {
         this.passiveObject.remove(key);
         hasKey = true;
     }
+    @Override
+    public void pickWeapon(Weapon weapon){
+        this.passiveObject.remove(weapon);
+        playerHasWeapon = true;
+    }
+    @Override
+    public void killMonster(ActiveObject monster){
+        this.activeObject.remove(monster);
+    }
 
     /**
      * Bewegt Spieler um einen Schritt zurück, bei Kollision mit einer Wand
@@ -278,16 +295,16 @@ public class GameWorld implements IGameWorld {
         Direction oldDirection = monster.getDirection();
         Direction direction = Direction.getRandomDirection();
         if (oldDirection == Direction.RIGHT) {
-            monster.setX(monster.getX() - 2);
+            monster.setX(monster.getX() - Monster.STEP_SIZE);
         }
         if (oldDirection == Direction.LEFT) {
-            monster.setX(monster.getX() + 2);
+            monster.setX(monster.getX() + Monster.STEP_SIZE);
         }
         if (oldDirection == Direction.DOWN) {
-            monster.setY(monster.getY() - 2);
+            monster.setY(monster.getY() - Monster.STEP_SIZE);
         }
         if (oldDirection == Direction.UP) {
-            monster.setY(monster.getY() + 2);
+            monster.setY(monster.getY() + Monster.STEP_SIZE);
         }
         monster.setDirection(direction);
     }
@@ -301,7 +318,7 @@ public class GameWorld implements IGameWorld {
             for (PassiveObject pObject : this.passiveObject) {
                 if (aObject.checkKollision(pObject)) {
                     if (pObject instanceof Wall || pObject instanceof Door) {
-                        aObject.kollisionWithNotPlayerObject();
+                        aObject.collisionWithNotPlayerObject();
                     }
                 }
             }
@@ -311,8 +328,8 @@ public class GameWorld implements IGameWorld {
                 if (aObject1.equals(aObject2)) {
                     break;
                 } else if (aObject1.checkKollision(aObject2)) {
-                    aObject1.kollisionWithNotPlayerObject();
-                    aObject2.kollisionWithNotPlayerObject();
+                    aObject1.collisionWithNotPlayerObject();
+                    aObject2.collisionWithNotPlayerObject();
                 }
             }
         }

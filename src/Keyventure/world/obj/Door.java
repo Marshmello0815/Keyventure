@@ -16,7 +16,7 @@ public class Door extends PassiveObject {
      * Ruft die Methode "enterDoor()" in der Klasse "GameWorld" auf, bei Kollision des Spielers mit einer Tür
      */
     @Override
-    public void kollisionWithPlayer() {
+    public void collisionWithPlayer() {
         world.enterDoor(this);
     }
 
