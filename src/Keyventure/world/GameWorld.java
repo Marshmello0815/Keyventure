@@ -106,7 +106,7 @@ public class GameWorld implements IGameWorld {
                 }
             }
 
-            for (ActiveObject aObject : getActiveObject()) {
+            for (ActiveObject aObject : this.activeObject) {
                 if (this.player.checkKollision(aObject) && playerHasWeapon){
                     killedMonster.add(aObject);
                 } else if (this.player.checkKollision(aObject) && !playerHasWeapon) {
