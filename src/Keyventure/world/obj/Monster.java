@@ -66,7 +66,11 @@ public class Monster extends ActiveObject {
     public void changeDirection() {
         int zufall = random.nextInt(2);
         if (zufall == 1) {
-            Direction direction = Direction.getRandomDirection();
+            Direction oldDirection = this.direction;
+            Direction newDirection = oldDirection;
+            while(oldDirection == newDirection){
+                newDirection = Direction.getRandomDirection();
+            }
             this.setDirection(direction);
         }
     }

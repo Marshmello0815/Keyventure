@@ -64,15 +64,7 @@ public class GameWorld implements IGameWorld {
      *
      * @return unmodifizierbare Liste aktiver Objekte
      */
-    public List<ActiveObject> getActiveObject() {
-        return Collections.unmodifiableList(this.activeObject);
-    }
 
-    /**
-     * Gibt alle passiven Objekte in Form einer nicht modifizierbaren Liste zurück
-     *
-     * @return unmodifizierbare Liste passiver Objekte
-     */
     public List<PassiveObject> getPassiveObject() {
         return Collections.unmodifiableList(this.passiveObject);
     }
@@ -293,7 +285,10 @@ public class GameWorld implements IGameWorld {
     @Override
     public void monsterTouchNotPlayerObject(Monster monster) {
         Direction oldDirection = monster.getDirection();
-        Direction direction = Direction.getRandomDirection();
+        Direction newDirection = monster.getDirection();
+        while(oldDirection == newDirection){
+            newDirection = Direction.getRandomDirection();
+        }
         if (oldDirection == Direction.RIGHT) {
             monster.setX(monster.getX() - Monster.STEP_SIZE);
         }
@@ -306,7 +301,7 @@ public class GameWorld implements IGameWorld {
         if (oldDirection == Direction.UP) {
             monster.setY(monster.getY() + Monster.STEP_SIZE);
         }
-        monster.setDirection(direction);
+        monster.setDirection(newDirection);
     }
 
     /**
@@ -405,15 +400,6 @@ public class GameWorld implements IGameWorld {
     @Override
     public boolean isDevMode() {
         return devMode;
-    }
-
-    /**
-     * Setzt den Developer-Modus auf den übergebenen Wert
-     *
-     * @param devMode Der boolesche Wert auf den der Developer-Modus gesetzt werden soll
-     */
-    public void setDevMode(boolean devMode) {
-        this.devMode = devMode;
     }
 
     /**
