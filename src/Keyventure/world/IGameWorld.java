@@ -8,8 +8,6 @@ public interface IGameWorld {
 
     void pickWeapon(Weapon weapon);
 
-    void killMonster(ActiveObject monster);
-
     void playerTouchWall(Wall wall);
 
     void enterDoor(Door door);

@@ -57,8 +57,6 @@ public class Monster extends ActiveObject {
     public void collisionWithNotPlayerObject() {
         world.monsterTouchNotPlayerObject(this);
     }
-    @Override
-    public void collisionWithSword(){world.killMonster(this);}
 
     /**
      * Änderung der Bewegungsrichtung eines Monsters (Geschieht mit einer Wahrscheinlichkeit von ca. 50 %)

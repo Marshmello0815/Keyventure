@@ -33,7 +33,7 @@ public class GameWorld implements IGameWorld {
     boolean left = false;
     boolean right = false;
 
-    boolean playerHasWeapon = false;
+    boolean hasWeapon = false;
 
     public GameWorld() {
         passiveObject = new ArrayList<>();
@@ -107,9 +107,9 @@ public class GameWorld implements IGameWorld {
             }
 
             for (ActiveObject aObject : this.activeObject) {
-                if (this.player.checkKollision(aObject) && playerHasWeapon){
+                if (this.player.checkKollision(aObject) && hasWeapon){
                     killedMonster.add(aObject);
-                } else if (this.player.checkKollision(aObject) && !playerHasWeapon) {
+                } else if (this.player.checkKollision(aObject) && !hasWeapon) {
                     if (countKollisionWithMonster == 0 && lives.getLives() > 0) {
                         lives.setLives(lives.getLives() - 1);
                         lives.setLostLives(lives.getLostLives() + 1);
@@ -242,14 +242,16 @@ public class GameWorld implements IGameWorld {
         this.passiveObject.remove(key);
         hasKey = true;
     }
+
+    /**
+     * Entfernen der Waffe aus der Liste passiver Objekten und setzen des Parameters "hasWeapon" auf "true"
+     *
+     * @param weapon Die Waffe, die aus der Liste entfernt werden soll
+     */
     @Override
     public void pickWeapon(Weapon weapon){
         this.passiveObject.remove(weapon);
-        playerHasWeapon = true;
-    }
-    @Override
-    public void killMonster(ActiveObject monster){
-        this.activeObject.remove(monster);
+        hasWeapon = true;
     }
 
     /**
