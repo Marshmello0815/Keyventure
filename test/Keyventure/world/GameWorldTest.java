@@ -15,7 +15,7 @@ public class GameWorldTest extends PApplet {
         GameWorld world = new GameWorld();
         Key key = new Key(world,10,10);
         world.addPassiveObject(key);
-        assertEquals(1, world.passiveObject.size());
+        assertEquals(1, world.getPassiveObjects().size());
     }
 
     @Test
@@ -23,7 +23,7 @@ public class GameWorldTest extends PApplet {
         GameWorld world = new GameWorld();
         Monster monster = new Monster(world, 10,10);
         world.addActiveObject(monster);
-        assertEquals(1, world.activeObject.size());
+        assertEquals(1, world.getActiveObjects().size());
     }
 
     @Test

@@ -64,9 +64,17 @@ public class GameWorld implements IGameWorld {
      *
      * @return unmodifizierbare Liste aller passiven Objekte
      */
-
-    public List<PassiveObject> getPassiveObject() {
+    public List<PassiveObject> getPassiveObjects() {
         return Collections.unmodifiableList(this.passiveObject);
+    }
+
+    /**
+     * Gibt alle aktiven Objekte in Form einer nicht modifizierbaren Liste zurück
+     *
+     * @return unmodifizierbare Liste aller aktiven Objekte
+     */
+    public List<ActiveObject> getActiveObjects() {
+        return Collections.unmodifiableList(this.activeObject);
     }
 
     /**
