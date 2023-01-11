@@ -6,8 +6,8 @@ import processing.core.PApplet;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
+import java.awt.event.KeyEvent;
 import static java.awt.event.KeyEvent.*;
 
 /**
@@ -71,18 +71,26 @@ public class Keyventure extends PApplet {
             }
         }
 
-        if (keyPressedDevMode.size() == 2 && !Objects.equals(keyPressedDevMode.get(0), keyPressedDevMode.get(1))) {
+        if (keyPressedDevMode.size() == 2) {
             world.devMode = true;
         }
     }
 
-    public void keyPressed() {
+    public void keyPressed(processing.event.KeyEvent event) {
+        KeyEvent nativeEvent = (KeyEvent) event.getNative();
+
         if (keyCode == VK_UP || keyCode == VK_W || keyCode == VK_LEFT || keyCode == VK_A || keyCode == VK_DOWN || keyCode == VK_S || keyCode == VK_RIGHT || keyCode == VK_D) {
             keyLastPressed.add(0, keyCode);
         }
 
-        if (keyCode == VK_CONTROL || keyCode == VK_F1) {
-            keyPressedDevMode.add(keyCode);
+        if (keyCode == VK_CONTROL && nativeEvent.getKeyLocation() == KEY_LOCATION_LEFT || keyCode == VK_F1) {
+            if(!keyPressedDevMode.contains(keyCode)) {
+                keyPressedDevMode.add(keyCode);
+            }
+        }
+
+        if (keyCode == VK_SHIFT && nativeEvent.getKeyLocation() == KEY_LOCATION_LEFT) {
+            world.playerRun();
         }
 
         if (world.isDevMode()) {
@@ -96,7 +104,9 @@ public class Keyventure extends PApplet {
         }
     }
 
-    public void keyReleased() {
+    public void keyReleased(processing.event.KeyEvent event) {
+        KeyEvent nativeEvent = (KeyEvent) event.getNative();
+
         if (keyCode == VK_UP || keyCode == VK_W || keyCode == VK_LEFT || keyCode == VK_A || keyCode == VK_DOWN || keyCode == VK_S || keyCode == VK_RIGHT || keyCode == VK_D) {
             keyLastPressed.removeIf(key -> key == keyCode);
         }
@@ -105,6 +115,9 @@ public class Keyventure extends PApplet {
             keyPressedDevMode.removeIf(key -> key == keyCode);
         }
 
+        if (keyCode == VK_SHIFT && nativeEvent.getKeyLocation() == KEY_LOCATION_LEFT) {
+            world.playerWalk();
+        }
     }
 }
 

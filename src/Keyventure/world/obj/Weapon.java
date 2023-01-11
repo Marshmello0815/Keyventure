@@ -27,7 +27,7 @@ public class Weapon extends PassiveObject{
             app.popStyle();
         }
         if (WEAPON == null) {
-            WEAPON = app.loadImage("/resource/sword.png");
+            WEAPON = app.loadImage("/resource/weapons/sword.png");
         }
         app.image(WEAPON, x , y, width, height);
     }

@@ -16,6 +16,6 @@ public class WallTest {
         world.addPassiveObject(wall);
         world.playerUp();
         wall.collisionWithPlayer();
-        assertEquals(10 + Player.STEP_SIZE, player.getY());
+        assertEquals(10 + Player.NORMAL_STEP_SIZE, player.getY());
     }
 }

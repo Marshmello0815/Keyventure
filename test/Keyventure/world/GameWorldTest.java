@@ -74,7 +74,7 @@ public class GameWorldTest extends PApplet {
         world.player = new Player(world, 10, 10);
         world.up = true;
         world.playerTouchWall(wall);
-        assertEquals(10 + Player.STEP_SIZE, world.player.getY());
+        assertEquals(10 + Player.NORMAL_STEP_SIZE, world.player.getY());
     }
 
     @Test
@@ -97,7 +97,7 @@ public class GameWorldTest extends PApplet {
         world.hasKey = false;
         world.up = true;
         world.enterDoor(door);
-        assertEquals(10 + Player.STEP_SIZE, world.player.getY());
+        assertEquals(10 + Player.NORMAL_STEP_SIZE, world.player.getY());
     }
 
     @Test
@@ -114,7 +114,7 @@ public class GameWorldTest extends PApplet {
         GameWorld world = new GameWorld();
         world.player = new Player(world, 10, 10);
         world.playerUp();
-        assertEquals(10 - Player.STEP_SIZE, world.player.getY());
+        assertEquals(10 - Player.NORMAL_STEP_SIZE, world.player.getY());
     }
 
     @Test
@@ -122,7 +122,7 @@ public class GameWorldTest extends PApplet {
         GameWorld world = new GameWorld();
         world.player = new Player(world, 10, 10);
         world.playerDown();
-        assertEquals(10 + Player.STEP_SIZE, world.player.getY());
+        assertEquals(10 + Player.NORMAL_STEP_SIZE, world.player.getY());
     }
 
     @Test
@@ -130,7 +130,7 @@ public class GameWorldTest extends PApplet {
         GameWorld world = new GameWorld();
         world.player = new Player(world, 10, 10);
         world.playerLeft();
-        assertEquals(10 - Player.STEP_SIZE, world.player.getX());
+        assertEquals(10 - Player.NORMAL_STEP_SIZE, world.player.getX());
     }
 
     @Test
@@ -138,7 +138,7 @@ public class GameWorldTest extends PApplet {
         GameWorld world = new GameWorld();
         world.player = new Player(world, 10, 10);
         world.playerRight();
-        assertEquals(10 + Player.STEP_SIZE, world.player.getX());
+        assertEquals(10 + Player.NORMAL_STEP_SIZE, world.player.getX());
     }
 
 }

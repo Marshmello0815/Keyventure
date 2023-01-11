@@ -17,7 +17,7 @@ public class DoorTest {
         world.addPassiveObject(door);
         world.playerUp();
         door.collisionWithPlayer();
-        assertEquals(10 + Player.STEP_SIZE, player.getY());
+        assertEquals(10 + Player.NORMAL_STEP_SIZE, player.getY());
     }
 
 }

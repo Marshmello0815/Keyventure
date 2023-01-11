@@ -8,7 +8,9 @@ import processing.core.PImage;
 public class Player extends GameObject {
 
     public static final int CYCLES_INVISIBILITY = 45;
-    public static final int STEP_SIZE = 4;
+    public static final int NORMAL_STEP_SIZE = 4;
+    public static final int RUN_STEP_SIZE = 6;
+    private int stepSize = NORMAL_STEP_SIZE;
     private int invisible = 0;
     private Direction direction = Direction.UP;
 
@@ -32,10 +34,18 @@ public class Player extends GameObject {
     }
 
     /**
+     * Setzt die Schrittgröße des Spielers auf den übergebenen Wert
+     * @param stepSize Der Wert, auf den die Schrittgröße des Spielers gesetzt werden soll
+     */
+    public void setStepSize(int stepSize) {
+        this.stepSize = stepSize;
+    }
+
+    /**
      * Führt die reguläre Bewegung des Spielers nach oben durch
      */
     public void up() {
-        y -= STEP_SIZE;
+        y -= stepSize;
         direction = Direction.UP;
     }
 
@@ -43,7 +53,7 @@ public class Player extends GameObject {
      * Führt die reguläre Bewegung des Spielers nach unten durch
      */
     public void down() {
-        y += STEP_SIZE;
+        y += stepSize;
         direction = Direction.DOWN;
     }
 
@@ -51,7 +61,7 @@ public class Player extends GameObject {
      * Führt die reguläre Bewegung des Spielers nach rechts durch
      */
     public void right() {
-        x += STEP_SIZE;
+        x += stepSize;
         direction = Direction.RIGHT;
     }
 
@@ -59,7 +69,7 @@ public class Player extends GameObject {
      * Führt die reguläre Bewegung des Spielers nach links durch
      */
     public void left() {
-        x -= STEP_SIZE;
+        x -= stepSize;
         direction = Direction.LEFT;
     }
 

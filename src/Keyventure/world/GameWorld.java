@@ -60,9 +60,9 @@ public class GameWorld implements IGameWorld {
     }
 
     /**
-     * Gibt alle aktiven Objekte in Form einer nicht modifizierbaren Liste zurück
+     * Gibt alle passiven Objekte in Form einer nicht modifizierbaren Liste zurück
      *
-     * @return unmodifizierbare Liste aktiver Objekte
+     * @return unmodifizierbare Liste aller passiven Objekte
      */
 
     public List<PassiveObject> getPassiveObject() {
@@ -394,6 +394,19 @@ public class GameWorld implements IGameWorld {
         up = false;
     }
 
+    /**
+     * Lässt den Spieler rennen durch Ändern der Schrittgröße
+     */
+    public void playerRun(){
+        this.player.setStepSize(Player.RUN_STEP_SIZE);
+    }
+
+    /**
+     * Lässt den Spieler normal gehen durch Ändern der Schrittgröße
+     */
+    public void playerWalk(){
+        this.player.setStepSize(Player.NORMAL_STEP_SIZE);
+    }
     /**
      * Gibt zurück, ob sich das Spiel im Developer-Modus befindet
      *
