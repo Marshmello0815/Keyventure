@@ -60,9 +60,9 @@ public class Keyventure extends PApplet {
         creator.setEnv(width, height);
         creator.initGameWorld();
 
-        gameStartButton = new Button((float) (0.305 * displayWidth), (float) (0.3 * displayHeight), (float) (0.4 * displayWidth), (float) (0.08 * displayHeight), "Spiel starten", (float) (0.035 * displayHeight));
-        controlsAndRulesButton = new Button((float) (0.305 * displayWidth), (float) (0.43 * displayHeight), (float) (0.4 * displayWidth), (float) (0.08 * displayHeight), "Steuerung und Regeln", (float) (0.033 * displayHeight));
-        gameExitButton = new Button((float) (0.305 * displayWidth), (float) (0.56 * displayHeight), (float) (0.4 * displayWidth), (float) (0.08 * displayHeight), "Spiel Beenden", (float) (0.035 * displayHeight));
+        gameStartButton = new Button((float) (0.305 * displayWidth), (float) (0.3 * displayHeight), (float) (0.4 * displayWidth), (float) (0.08 * displayHeight), "Spiel starten", (float) (0.02 * displayWidth));
+        controlsAndRulesButton = new Button((float) (0.305 * displayWidth), (float) (0.43 * displayHeight), (float) (0.4 * displayWidth), (float) (0.08 * displayHeight), "Steuerung und Regeln", (float) (0.016 * displayWidth));
+        gameExitButton = new Button((float) (0.305 * displayWidth), (float) (0.56 * displayHeight), (float) (0.4 * displayWidth), (float) (0.08 * displayHeight), "Spiel Beenden", (float) (0.02 * displayWidth));
         mainMenuButtons.add(gameStartButton);
         mainMenuButtons.add(controlsAndRulesButton);
         mainMenuButtons.add(gameExitButton);
@@ -70,15 +70,15 @@ public class Keyventure extends PApplet {
             world.setMainMenuButtons(mainMenuButtons);
         }
 
-        gameRestartButton = new Button((float) (0.305 * displayWidth), (float) (0.63 * displayHeight), (float) (0.4 * displayWidth), (float) (0.08 * displayHeight), "Spiel neustarten", (float) (0.035 * displayHeight));
-        backToMainMenuButton = new Button((float) (0.305 * displayWidth), (float) (0.76 * displayHeight), (float) (0.4 * displayWidth), (float) (0.08 * displayHeight), "Zurück zum Hauptmenü", (float) (0.033 * displayHeight));
+        gameRestartButton = new Button((float) (0.305 * displayWidth), (float) (0.63 * displayHeight), (float) (0.4 * displayWidth), (float) (0.08 * displayHeight), "Spiel neustarten", (float) (0.02 * displayWidth));
+        backToMainMenuButton = new Button((float) (0.305 * displayWidth), (float) (0.76 * displayHeight), (float) (0.4 * displayWidth), (float) (0.08 * displayHeight), "Zurück zum Hauptmenü", (float) (0.016 * displayWidth));
         winLoseButtons.add(gameRestartButton);
         winLoseButtons.add(backToMainMenuButton);
         if (world.getWinLoseButtons().size() == 0) {
             world.setWinLoseButtons(winLoseButtons);
         }
 
-        rulesToMainMenuButton = new Button((float) (0.305 * displayWidth), (float) (0.8 * displayHeight), (float) (0.4 * displayWidth), (float) (0.08 * displayHeight), "Zurück zum Hauptmenü", (float) (0.033 * displayHeight));
+        rulesToMainMenuButton = new Button((float) (0.305 * displayWidth), (float) (0.8 * displayHeight), (float) (0.4 * displayWidth), (float) (0.08 * displayHeight), "Zurück zum Hauptmenü", (float) (0.016 * displayWidth));
         controlsAndRulesButtons.add(rulesToMainMenuButton);
         if (world.getControlsAndRulesButtons().size() == 0) {
             world.setControlsAndRulesButtons(controlsAndRulesButtons);
