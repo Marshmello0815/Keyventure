@@ -1,5 +1,6 @@
 package Keyventure;
 
+import Keyventure.world.Button;
 import Keyventure.world.GameWorld;
 import Keyventure.world.GameWorldCreator;
 import processing.core.PApplet;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import java.awt.event.KeyEvent;
+
 import static java.awt.event.KeyEvent.*;
 
 /**
@@ -22,13 +24,27 @@ public class Keyventure extends PApplet {
     GameWorldCreator creator;
     List<Integer> keyLastPressed;
     List<Integer> keyPressedDevMode;
+    List<Button> mainMenuButtons;
+    List<Button> controlsAndRulesButtons;
+    List<Button> winLoseButtons;
 
+    Button gameStartButton;
+    Button controlsAndRulesButton;
+    Button gameExitButton;
+    Button gameRestartButton;
+    Button backToMainMenuButton;
+    Button rulesToMainMenuButton;
+
+    boolean clicked = false;
 
     public Keyventure() {
         world = new GameWorld();
         creator = new GameWorldCreator(world);
         keyLastPressed = new ArrayList<>();
         keyPressedDevMode = new ArrayList<>();
+        mainMenuButtons = new ArrayList<>();
+        controlsAndRulesButtons = new ArrayList<>();
+        winLoseButtons = new ArrayList<>();
     }
 
     @Override
@@ -43,6 +59,30 @@ public class Keyventure extends PApplet {
         size(width, height - 120);
         creator.setEnv(width, height);
         creator.initGameWorld();
+
+        gameStartButton = new Button((float) (0.305 * displayWidth), (float) (0.3 * displayHeight), (float) (0.4 * displayWidth), (float) (0.08 * displayHeight), "Spiel starten", (float) (0.035 * displayHeight));
+        controlsAndRulesButton = new Button((float) (0.305 * displayWidth), (float) (0.43 * displayHeight), (float) (0.4 * displayWidth), (float) (0.08 * displayHeight), "Steuerung und Regeln", (float) (0.033 * displayHeight));
+        gameExitButton = new Button((float) (0.305 * displayWidth), (float) (0.56 * displayHeight), (float) (0.4 * displayWidth), (float) (0.08 * displayHeight), "Spiel Beenden", (float) (0.035 * displayHeight));
+        mainMenuButtons.add(gameStartButton);
+        mainMenuButtons.add(controlsAndRulesButton);
+        mainMenuButtons.add(gameExitButton);
+        if (world.getMainMenuButtons().size() == 0) {
+            world.setMainMenuButtons(mainMenuButtons);
+        }
+
+        gameRestartButton = new Button((float) (0.305 * displayWidth), (float) (0.63 * displayHeight), (float) (0.4 * displayWidth), (float) (0.08 * displayHeight), "Spiel neustarten", (float) (0.035 * displayHeight));
+        backToMainMenuButton = new Button((float) (0.305 * displayWidth), (float) (0.76 * displayHeight), (float) (0.4 * displayWidth), (float) (0.08 * displayHeight), "Zurück zum Hauptmenü", (float) (0.033 * displayHeight));
+        winLoseButtons.add(gameRestartButton);
+        winLoseButtons.add(backToMainMenuButton);
+        if (world.getWinLoseButtons().size() == 0) {
+            world.setWinLoseButtons(winLoseButtons);
+        }
+
+        rulesToMainMenuButton = new Button((float) (0.305 * displayWidth), (float) (0.8 * displayHeight), (float) (0.4 * displayWidth), (float) (0.08 * displayHeight), "Zurück zum Hauptmenü", (float) (0.033 * displayHeight));
+        controlsAndRulesButtons.add(rulesToMainMenuButton);
+        if (world.getControlsAndRulesButtons().size() == 0) {
+            world.setControlsAndRulesButtons(controlsAndRulesButtons);
+        }
     }
 
     @Override
@@ -53,9 +93,98 @@ public class Keyventure extends PApplet {
     }
 
     /**
-     * Bewegung des Spielers nach oben/links/unten/rechts in Abhängigkeit der zuletzt gedrückten Taste (w, a, s, d bzw. Pfeiltaste oben, links, unten, rechts)
+     * Eingaben werden verarbeitet
      */
     private void processInput() {
+        if(world.isMainMenu()) {
+            if (isMouseOverButton(gameStartButton)) {
+                if (clicked) {
+                    gameStartButton.setPressed(true);
+                }
+                if (!clicked && gameStartButton.isPressed()) {
+                    world.setMainMenu(false);
+                    if (world.getPassiveObjects().size() == 0 && world.getActiveObjects().size() == 0) {
+                        creator.initGameWorld();
+                    }
+                } else {
+                    clicked = false;
+                }
+            } else {
+                gameStartButton.setPressed(false);
+            }
+
+            if (isMouseOverButton(controlsAndRulesButton)) {
+                if (clicked) {
+                    controlsAndRulesButton.setPressed(true);
+                }
+                if (!clicked && controlsAndRulesButton.isPressed()) {
+                    world.setControlsAndRules(true);
+                } else {
+                    clicked = false;
+                }
+            } else {
+                controlsAndRulesButton.setPressed(false);
+            }
+
+            if (isMouseOverButton(gameExitButton)) {
+                if (clicked) {
+                    gameExitButton.setPressed(true);
+                }
+                if (!clicked && gameExitButton.isPressed()) {
+                    exit();
+                } else {
+                    clicked = false;
+                }
+            } else {
+                gameExitButton.setPressed(false);
+            }
+        }
+
+        if(world.isGameWon() || world.isGameLose()) {
+            if (isMouseOverButton(gameRestartButton)) {
+                if (clicked) {
+                    gameRestartButton.setPressed(true);
+                }
+                if (!clicked && gameRestartButton.isPressed()) {
+                    world.restart();
+                    creator.initGameWorld();
+                } else {
+                    clicked = false;
+                }
+            } else {
+                gameRestartButton.setPressed(false);
+            }
+
+            if (isMouseOverButton(backToMainMenuButton)) {
+                if (clicked) {
+                    backToMainMenuButton.setPressed(true);
+                }
+                if (!clicked && backToMainMenuButton.isPressed()) {
+                    world.restart();
+                    world.setMainMenu(true);
+                } else {
+                    clicked = false;
+                }
+            } else {
+                backToMainMenuButton.setPressed(false);
+            }
+        }
+
+        if(world.isControlsAndRules()) {
+            if (isMouseOverButton(rulesToMainMenuButton)) {
+                if (clicked) {
+                    rulesToMainMenuButton.setPressed(true);
+                }
+                if (!clicked && rulesToMainMenuButton.isPressed()) {
+                    world.setControlsAndRules(false);
+                } else {
+                    clicked = false;
+                }
+            } else {
+                rulesToMainMenuButton.setPressed(false);
+            }
+        }
+
         if (keyLastPressed.size() > 0) {
             if (keyLastPressed.get(0) == VK_UP || keyLastPressed.get(0) == VK_W) {
                 world.playerUp();
@@ -76,6 +205,12 @@ public class Keyventure extends PApplet {
         }
     }
 
+    public boolean isMouseOverButton(Button button) {
+        boolean mouseOverButton;
+        mouseOverButton = (mouseX >= button.getX() && mouseX <= button.getX() + button.getWidth()) && (mouseY >= button.getY() && mouseY <= button.getY() + button.getHeight());
+        return mouseOverButton;
+    }
+
     public void keyPressed(processing.event.KeyEvent event) {
         KeyEvent nativeEvent = (KeyEvent) event.getNative();
 
@@ -84,7 +219,7 @@ public class Keyventure extends PApplet {
         }
 
         if (keyCode == VK_CONTROL && nativeEvent.getKeyLocation() == KEY_LOCATION_LEFT || keyCode == VK_F1) {
-            if(!keyPressedDevMode.contains(keyCode)) {
+            if (!keyPressedDevMode.contains(keyCode)) {
                 keyPressedDevMode.add(keyCode);
             }
         }
@@ -118,6 +253,14 @@ public class Keyventure extends PApplet {
         if (keyCode == VK_SHIFT && nativeEvent.getKeyLocation() == KEY_LOCATION_LEFT) {
             world.playerWalk();
         }
+    }
+
+    public void mousePressed() {
+        clicked = mouseButton == LEFT;
+    }
+
+    public void mouseReleased() {
+        clicked = false;
     }
 }
 
