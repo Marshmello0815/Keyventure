@@ -67,6 +67,15 @@ public class GameWorldTest extends PApplet {
     }
 
     @Test
+    public void testPickWeapon() {
+        GameWorld world = new GameWorld();
+        Weapon weapon = new Weapon(world,10, 10);
+        world.addPassiveObject(weapon);
+        world.pickWeapon(weapon);
+        assertTrue(world.hasWeapon);
+    }
+
+    @Test
     public void testPlayerTouchWall() {
         GameWorld world = new GameWorld();
         Wall wall = new Wall(world, 10, 10, 40);
