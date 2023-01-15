@@ -28,17 +28,6 @@ public class Button {
         this.textSize = textSize;
     }
 
-    public Button(float x, float y, float width, float height, String buttonText, float textSize, float buttonTextXPosKorrektur, float buttonTextYPosKorrektur) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-        this.buttonText = buttonText;
-        this.textSize = textSize;
-        this.buttonTextXPosKorrektur = buttonTextXPosKorrektur;
-        this.buttonTextYPosKorrektur = buttonTextYPosKorrektur;
-    }
-
     /**
      * Gibt X-Koordinate des Buttons zurück
      *

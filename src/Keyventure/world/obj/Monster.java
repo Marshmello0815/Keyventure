@@ -109,7 +109,7 @@ public class Monster extends ActiveObject {
             app.rect(x - 1, y - 1, width + 1, height + 1);
             app.popStyle();
         }
-        //funktioniert noch nicht zuverlässig
+
         if (getDirection() == Direction.RIGHT) {
             if (Right1 == null) {
                 Right1 = app.loadImage("/resource/monster/MonsterRight_1.jpg");
@@ -176,7 +176,5 @@ public class Monster extends ActiveObject {
             }
             app.image(Back3, x, y, width, height);
         }
-
-
     }
 }
